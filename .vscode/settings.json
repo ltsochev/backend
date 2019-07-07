@@ -1,0 +1,9 @@
+{
+    "sqltools.connections": [
+        {
+            "database": ".\\database\\ltsochev.sqlite",
+            "dialect": "SQLite",
+            "name": "Ltsochev local"
+        }
+    ]
+}
