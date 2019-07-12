@@ -177,6 +177,7 @@ return [
         App\Providers\RepositoryProvider::class,
 
         App\Libraries\Settings\ServiceProvider::class,
+        App\Libraries\Translation\ServiceProvider::class,
     ],
 
     /*
