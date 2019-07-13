@@ -2,9 +2,10 @@
 
 namespace App\Libraries\Translation;
 
-use App\Libraries\Translation\Middleware\SetLocaleMiddleware;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Illuminate\Translation\FileLoader;
+use App\Libraries\Translation\Middleware\SetLocaleMiddleware;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -16,8 +17,25 @@ class ServiceProvider extends LaravelServiceProvider
 
     public function register()
     {
-        $this->app->singleton('ltsochev.translation', function($app) {
-            //
+        $this->registerLoader();
+
+        $this->app->singleton('translator', function($app) {
+            $loader = $app['translation.loader'];
+
+            $locale = $app['config']['app.locale'];
+
+            $trans = new Translator($loader, $locale);
+
+            $trans->setFallback($app['config']['app.fallback_locale']);
+
+            return $trans;
+        });
+    }
+
+    protected function registerLoader()
+    {
+        $this->app->singleton('translation.loader', function ($app) {
+            return new FileLoader($app['files'], $app['path.lang']);
         });
     }
 }
