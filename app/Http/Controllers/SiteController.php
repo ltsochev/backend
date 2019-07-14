@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use function App\Support\seo;
+
 class SiteController extends Controller
 {
     public function index()
     {
-        app('translator');
         return view('welcome');
     }
 }

@@ -9,15 +9,36 @@ use Illuminate\Contracts\Foundation\Application;
 
 class SetLocaleMiddleware
 {
+    /**
+     * List of valid locale types
+     *
+     * @var array
+     */
     private const ALLOWED_LOCALES = ['en', 'bg'];
 
+    /**
+     *  Laravel's IoC container
+     *
+     * @var \Illuminate\Contracts\Foundation\Application
+     */
     private $app;
 
+    /**
+     * Creates an instance of the middleware
+     *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;
     }
 
+    /**
+     * Handles the incoming request
+     *
+     * @param mixed $request
+     * @param \Closure $next
+     */
     public function handle($request, Closure $next)
     {
         if (php_sapi_name() == 'cli')
@@ -44,6 +65,13 @@ class SetLocaleMiddleware
         return $next($request);
     }
 
+    /**
+     * Detects the locale by the client's IP address
+     * and saves it into the session
+     *
+     * @param mixed $request
+     * @return void
+     */
     private function detectLocaleByIp($request)
     {
         $locale = config('app.fallback_locale');

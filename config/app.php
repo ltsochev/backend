@@ -178,6 +178,7 @@ return [
 
         App\Libraries\Settings\ServiceProvider::class,
         App\Libraries\Translation\ServiceProvider::class,
+        App\Libraries\Seo\ServiceProvider::class,
     ],
 
     /*
