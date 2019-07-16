@@ -79,3 +79,26 @@ function array_has_required(Array $requiredValues, Array $compareArray)
 	return ( count(array_intersect_key(array_flip($requiredValues), $compareArray)) === count($requiredValues) );
 }
 
+/**
+ * Parses the given URL and adds query variables to
+ * it while respecting the question mark or ampersand
+ * symbols at the end of the URL
+ *
+ * @param   string  $url
+ * @param   array   $params
+ * @return  string
+ */
+function url_query($url, array $params = [])
+{
+    if (count($params) == 0) { return $url; }
+
+    $queryParams = [];
+    $parsedUrl = parse_url($url);
+    $queryStr = \Illuminate\Support\Arr::get($parsedUrl, 'query');
+    parse_str($queryStr, $queryParams);
+
+    $httpParams = array_merge($queryParams, $params);
+    $urlPath = \Illuminate\Support\Arr::get($parsedUrl, 'path', '/');
+
+    return url($urlPath . '?' . http_build_query($httpParams));
+}

@@ -137,6 +137,14 @@ final class Manager
 		$this->openGraph->put('url', $url);
     }
 
+    public function addGraphTag(array $tags)
+    {
+        foreach($tags as $key => $value)
+        {
+            $this->openGraph->put($key, $value);
+        }
+    }
+
     public function addKeyword($keywords)
 	{
 		if ( ! is_array($keywords) )

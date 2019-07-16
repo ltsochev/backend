@@ -15,10 +15,10 @@ mix.options({
     processCssUrls: false
 });
 
-mix.js('app.js', 'public/js')
-   .js('app-minimal.js', 'public/js')
-   .sass('sass/styles.scss', 'public/css')
-   .sass('sass/planner.scss', 'public/css')
-   .sass('sass/project.scss', 'public/css')
+mix.js('resources/js/app.js', 'public/js')
+   .js('resources/js/app-minimal.js', 'public/js')
+   .sass('resources/sass/styles.scss', 'public/css')
+   .sass('resources/sass/planner.scss', 'public/css')
+   .sass('resources/sass/project.scss', 'public/css')
 
-mix.copyDirectory('assets', 'public/assets');
+mix.copyDirectory('resources/assets', 'public/assets');
