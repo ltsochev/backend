@@ -1,0 +1,35 @@
+@include media-breakpoint-down(sm) {
+.section-block {
+    margin-top: 30px;
+}
+
+.project-planner {
+    fieldset {
+        .input-group {
+            &.justify {
+
+                input.form-control {
+                    display: block;
+                    width: 100%;
+                    margin: 1% 0;
+                }
+            }
+
+            textarea {
+                width: 100%;
+            }
+        }
+
+        &.project-needs {
+            .input-group.justify {
+                .lt-custom-control {
+                    width: 45%;
+                    margin: 1% auto;
+                }
+            }
+        }
+    }
+}
+
+
+}

@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel {{app()->getLocale()}}
+                    Laravel {{app()->getLocale()}} {{session()->get('locale')}}
                 </div>
 
                 <div class="links">

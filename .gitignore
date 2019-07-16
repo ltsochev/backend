@@ -1,10 +1,14 @@
 .vscode/
 .idea/
+/build
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
+/public/assets
+/public/css
+/public/js
 .env
 .env.backup
 .phpunit.result.cache

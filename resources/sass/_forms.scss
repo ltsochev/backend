@@ -1,0 +1,21 @@
+@import 'variables';
+
+.input-group {
+    position: relative;
+
+    &.justify {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        width: 100%;
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .lt-custom-control {
+            flex-grow: 1;
+            margin: 0 1%;
+        }
+    }
+}

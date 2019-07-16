@@ -1,0 +1,9 @@
+@include media-breakpoint-between(md, md) {
+    .project-article {
+        .slider-gallery {
+            ul.slider {
+                right: 3.5%;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@include media-breakpoint-down(md) {
+.hex-grid {
+    padding: 0;
+    width: 100%;
+    .hex {
+        width: 33%;
+        margin-bottom: 10%;
+    }
+}
+}
+
+@include media-breakpoint-down(xs) {
+.hex-grid {
+    .hex {
+        width: 50%;
+        margin-bottom: 15%;
+    }
+}
+}

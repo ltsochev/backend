@@ -58,6 +58,7 @@ class SetLocaleMiddleware
             $locale !== session()->get('locale'))
         {
             session()->put('locale', $locale);
+            session()->save();
         }
 
         $this->app->setLocale(session()->get('locale'));

@@ -1,0 +1,79 @@
+@import 'variables';
+
+.lt-custom-control {
+    position: relative;
+    display: block;
+    padding: 0;
+    cursor: pointer;
+    transition: all .3s linear;
+
+    label {
+        cursor: pointer;
+        margin: 0;
+        display: block;
+    }
+
+    &.btn-check {
+        padding: 5px 10px;
+        background: $gray-contrast;
+        text-transform: uppercase;
+        color: $white;
+        border-radius: 5px;
+        text-align: center;
+        height: 40px;
+        font-size: 16px;
+
+        &:hover,
+        &.active {
+            background: $orange-alt;
+        }
+
+        input {
+            display: none;
+        }
+    }
+
+    .info {
+        visibility:hidden;
+        position: absolute;
+        background: $orange-alt;
+        text-transform: none;
+        font-size: 14px;
+        text-align: center;
+        left: 0;
+        right: 0;
+        bottom:0;
+        border-radius: 0 0 5px 5px;
+        transition: opacity .5s linear;
+        transform: translateY(100%);
+        opacity: 0;
+        padding: 10px;
+        z-index: 10;
+
+        .icon {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .3s linear;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+
+    &.has-info:hover {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        .info {
+            visibility: visible;
+            opacity: .9;
+        }
+    }
+
+    &.active {
+        .info {
+            .icon {
+                opacity: 1;
+            }
+        }
+    }
+}

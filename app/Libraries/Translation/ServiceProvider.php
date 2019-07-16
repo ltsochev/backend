@@ -11,8 +11,7 @@ class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {
-        $kernel = $this->app[Kernel::class];
-        $kernel->pushMiddleware(SetLocaleMiddleware::class);
+        $this->injectMiddleware();
     }
 
     public function register()
@@ -37,5 +36,11 @@ class ServiceProvider extends LaravelServiceProvider
         $this->app->singleton('translation.loader', function ($app) {
             return new FileLoader($app['files'], $app['path.lang']);
         });
+    }
+
+    protected function injectMiddleware()
+    {
+        $kernel = $this->app[Kernel::class];
+        $kernel->pushMiddleware(SetLocaleMiddleware::class);
     }
 }

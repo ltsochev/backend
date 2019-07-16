@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:400,500,700&subset=cyrillic');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Helpers
+@import 'helpers';
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    text-rendering: geometricPrecision;
+}
+
+body {
+    position: relative;
+}

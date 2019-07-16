@@ -11,5 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.options({
+    processCssUrls: false
+});
+
+mix.js('app.js', 'public/js')
+   .js('app-minimal.js', 'public/js')
+   .sass('sass/styles.scss', 'public/css')
+   .sass('sass/planner.scss', 'public/css')
+   .sass('sass/project.scss', 'public/css')
+
+mix.copyDirectory('assets', 'public/assets');

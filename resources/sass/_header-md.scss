@@ -1,0 +1,40 @@
+@include media-breakpoint-down(md) {
+.hero-panel {
+    .navbar {
+        background-color: $body-bg;
+        .nav-menu {
+            > li.nav-menu-item {
+                a {
+                    text-align: right;
+                }
+            }
+        }
+
+        .navbar-collapse {
+            &.show,
+            &.collapsing {
+                margin:0 -15px;
+                padding: 0 15px;
+                box-shadow: 0 2px 5px -5px rgba(0, 0, 0, .5);
+            }
+        }
+
+        .navbar-collapse {
+            &.show,
+            &.collapsing {
+                background: rgba(51, 51, 51, .6);
+            }
+        }
+
+        &.fixed-top {
+            .navbar-collapse {
+                &.show,
+                &.collapsing {
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+
+}

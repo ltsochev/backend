@@ -1,0 +1,49 @@
+@include media-breakpoint-down(xs) {
+
+.project-planner {
+    fieldset {
+        .input-group.justify {
+            .lt-custom-control {
+                display: block;
+                width: 100%;
+                margin: 1% 0;
+
+                &:nth-child(3n+2) {
+                    margin: 1% 0;
+                }
+            }
+        }
+
+        &.project-needs {
+            .input-group.justify {
+                .lt-custom-control {
+                    display: block;
+                    width: 100%;
+                    margin: 1% 0;
+                }
+            }
+        }
+
+        &.start-date,
+        &.launch-date {
+            select.custom-select {
+                display: block;
+                width: 100%;
+                margin: 1% 0;
+
+                &:nth-child(3n+2) {
+                    margin: 1% 0;
+                }
+            }
+        }
+
+        &.finished-block {
+            .btn-project-planner {
+                width: 75%;
+            }
+        }
+    }
+}
+// .project-planner fieldset.project-needs .input-group.justify .lt-custom-control
+// .project-planner fieldset.finished-block .btn-project-planner
+}
