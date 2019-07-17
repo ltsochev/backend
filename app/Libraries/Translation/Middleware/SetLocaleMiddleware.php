@@ -41,13 +41,11 @@ class SetLocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (php_sapi_name() == 'cli')
-        {
+        if (php_sapi_name() == 'cli') {
             return $next($request);
         }
 
-        if (!session()->has('locale'))
-        {
+        if (!session()->has('locale')) {
             $this->detectLocaleByIp($request);
         }
 
@@ -55,8 +53,7 @@ class SetLocaleMiddleware
 
         if (!is_null($locale) &&
             in_array($locale, self::ALLOWED_LOCALES) &&
-            $locale !== session()->get('locale'))
-        {
+            $locale !== session()->get('locale')) {
             session()->put('locale', $locale);
             session()->save();
         }
@@ -82,7 +79,7 @@ class SetLocaleMiddleware
             $reader = new Reader($databasePath);
             $record = $reader->country(request()->ip());
             $locale = strtolower($record->country->isoCode);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             \Log::error($e);
         }
 

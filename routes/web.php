@@ -14,15 +14,15 @@
 Route::get('/', 'SiteController@index');
 Route::get('tos', 'SiteController@getTerms')->name('tos');
 
-Route::group(['prefix' => 'projects'], function($router) {
+Route::group(['prefix' => 'projects'], function ($router) {
     $router->get('planner', 'ProjectsController@getPlanner')->name('project-planner');
     $router->post('planner/submit', 'ProjectsController@submitProject')->name('project-submit');
 
-    $router->get('{project}', 'ProjectsController@getProject')->name('project');
+    $router->get('details/{project}', 'ProjectsController@getProject')->name('project');
 });
 
 Route::get('admin/login', 'AuthController@getLogin');
 
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function($router) {
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
     $router->get('/', 'DashboardController@getIndex');
 });

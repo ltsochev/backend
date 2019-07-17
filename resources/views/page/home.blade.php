@@ -173,11 +173,11 @@
                 <div class="row">
                     <ul class="contacts-list">
                         <li class="contacts-list-item">
-                            <a href="mailto: info@ltsochev.com?subject=Contact form request">
+                            <a href="mailto: info@ltsochev.com?subject=Business inquiry">
                                 <div class="icon"><i class="fa fa-envelope"></i></div>
                                 <div class="title">Email</div>
                                 <div class="value">
-                                    <span>ltsochev@live.com</span>
+                                    <span>lachezar@ltsochev.com</span>
                                 </div>
                             </a>
                         </li>
