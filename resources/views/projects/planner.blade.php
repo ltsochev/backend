@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="hero-panel">
-    <a href="<?= url('/'); ?>" class="logo">Lachezar Tsochev IT Solutions</a>
+    <a href="{{ url('/') }}" class="logo">Lachezar Tsochev IT Solutions</a>
     <div class="app-navbar">
         <nav class="navbar navbar-expand-lg navbar-light main-menu">
             @include('layouts.language-switcher')

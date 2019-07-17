@@ -17,4 +17,9 @@ class SiteController extends Controller
 
         return view('page.home');
     }
+
+    public function getTerms()
+    {
+        return view('page.tos');
+    }
 }

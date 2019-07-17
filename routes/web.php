@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'SiteController@index');
-Route::get('tos', 'SiteController@getTerms')->name('tos');
 
 Route::group(['prefix' => 'projects'], function ($router) {
     $router->get('planner', 'ProjectsController@getPlanner')->name('project-planner');
