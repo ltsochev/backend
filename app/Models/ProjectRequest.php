@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectRequests extends Model
+class ProjectRequest extends Model
 {
     protected $table = 'project_requests';
     protected $fillable = [
