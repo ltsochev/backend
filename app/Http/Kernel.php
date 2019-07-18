@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Libraries\Translation\Middleware\SetLocaleMiddleware::class,
         ],
 
         'api' => [
@@ -77,4 +78,13 @@ class Kernel extends HttpKernel
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
+
+    public function pushMiddlewareToGroup($group, $middleware)
+    {
+        if (!array_key_exists($group, $this->getMiddlewareGroups())) {
+            return;
+        }
+
+        array_push($this->middlewareGroups[$group], $middleware);
+    }
 }

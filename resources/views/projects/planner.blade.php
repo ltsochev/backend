@@ -45,9 +45,9 @@
                     <fieldset class="personal-details input-row">
                         <legend>Your details</legend>
                         <div class="input-group justify">
-                            <input type="text" class="form-control" name="name" placeholder="Name" />
-                            <input type="text" class="form-control" name="email" inputmode="email" placeholder="E-Mail" />
-                            <input type="text" class="form-control" name="phone" inputmode="tel" placeholder="Phone number (Optional)" />
+                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" />
+                            <input type="text" class="form-control" name="email" inputmode="email" placeholder="E-Mail" value="{{ old('email') }}" />
+                            <input type="text" class="form-control" name="phone" inputmode="tel" placeholder="Phone number (Optional)" value="{{ old('phone') }}" />
                         </div>
                     </fieldset>
                 </section>
@@ -56,7 +56,7 @@
                         <legend>Type of project</legend>
                         <div class="input-group justify">
                             <div class="lt-custom-control lt-custom-radio btn-check has-info">
-                                <input type="radio" id="custom-btn-project-type-website" name="project-type" value="website" />
+                                <input type="radio" id="custom-btn-project-type-website" name="project-type" value="website" @if (old('project-type') == 'website') checked @endif />
                                 <label for="custom-btn-project-type-website">Website</label>
                                 <div class="info">
                                     From a simple site to a complex e-commerce platform
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-radio btn-check has-info">
-                                <input type="radio" id="custom-btn-project-type-app" name="project-type" value="application" />
+                                <input type="radio" id="custom-btn-project-type-app" name="project-type" value="app"  @if (old('project-type') == 'app') checked @endif />
                                 <label for="custom-btn-project-type-app">Application</label>
                                 <div class="info">
                                     Looking to build a larger scale web application?
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-radio btn-check has-info">
-                                <input type="radio" id="custom-btn-project-type-else" name="project-type" value="other" />
+                                <input type="radio" id="custom-btn-project-type-else" name="project-type" value="other"  @if (old('project-type') == 'other') checked @endif />
                                 <label for="custom-btn-project-type-else">Something else</label>
                                 <div class="info">
                                     Who doesn't like a challenge? - what have you got for me?
@@ -86,7 +86,7 @@
                     <fieldset class="brief-description">
                         <legend>Brief description</legend>
                         <div class="input-group center">
-                            <textarea name="description" class="form-control" placeholder="Tell us about your project"></textarea>
+                            <textarea name="description" class="form-control" placeholder="Tell us about your project">{{old('description')}}</textarea>
                         </div>
                     </fieldset>
                 </section>
@@ -95,7 +95,7 @@
                         <legend>What do you need?</legend>
                         <div class="input-group justify">
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="strategy" id="need-strategy" />
+                                <input type="checkbox" name="needs[]" value="strategy" id="need-strategy" @if(is_array(old('needs')) && in_array('strategy', old('needs'))) checked @endif />
                                 <label for="need-strategy">Strategy</label>
                                 <div class="info">
                                     Taking a simple idea through to a finished project by building a solid business foundation.
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="ui-ux" id="need-ui-ux" />
+                                <input type="checkbox" name="needs[]" value="ui-ux" id="need-ui-ux" @if(is_array(old('needs')) && in_array('ui-ux', old('needs'))) checked @endif />
                                 <label for="need-ui-ux">User interface / UX</label>
                                 <div class="info">
                                     User experience is a crucial part of all my projects - ensuring a natural flow that everyone can use and enjoy.
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="design" id="need-design" />
+                                <input type="checkbox" name="needs[]" value="design" id="need-design" @if(is_array(old('needs')) && in_array('design', old('needs'))) checked @endif />
                                 <label for="need-design">Design</label>
                                 <div class="info">
                                     Much more than just pixel pushing - this is where I ensure your site looks gorgeous and functions perfectly.
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="development" id="need-dev" />
+                                <input type="checkbox" name="needs[]" value="development" id="need-dev" @if(is_array(old('needs')) && in_array('development', old('needs'))) checked @endif />
                                 <label for="need-dev">Development</label>
                                 <div class="info">
                                     Turning designs into code that we can then power with some coding magic.
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="cms" id="need-cms" />
+                                <input type="checkbox" name="needs[]" value="cms" id="need-cms" @if(is_array(old('needs')) && in_array('cms', old('needs'))) checked @endif />
                                 <label for="need-cms">CMS Implementation</label>
                                 <div class="info">
                                     Use homegrown or popular open-source CMS depending on what is needed.
@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                             <div class="lt-custom-control lt-custom-checkbox btn-check has-info">
-                                <input type="checkbox" name="needs[]" value="other" id="need-other" />
+                                <input type="checkbox" name="needs[]" value="other" id="need-other" @if(is_array(old('needs')) && in_array('other', old('needs'))) checked @endif />
                                 <label for="need-other">Not sure</label>
                                 <div class="info">
                                     That's okay - I can help you discover exactly what you need from the business idea straight to the finished project.
@@ -153,17 +153,17 @@
                             <select name="start-month" class="custom-select">
                                 <option value="0">Select month</option>
                                 @for ($i = 1; $i <= 12; $i++)
-                                <option value="{{$i}}">{{Carbon\Carbon::now()->month($i)->isoFormat('MMMM')}}</option>
+                                <option value="{{$i}}" @if(old('start-month') == $i) selected @endif>{{Carbon\Carbon::now()->month($i)->isoFormat('MMMM')}}</option>
                                 @endfor
                             </select>
                             <select name="start-year" class="custom-select">
                                 <option value="0">Select year</option>
                                 @for ($i = date('Y'); $i < (date('Y')+3); $i++)
-                                <option value="{{$i}}">{{$i}}</option>
+                                <option value="{{$i}}" @if(old('start-year') == $i) selected @endif>{{$i}}</option>
                                 @endfor
                             </select>
                             <div class="lt-custom-control lt-custom-checkbox btn-check">
-                                <input type="checkbox" name="start-date" value="no-rush" id="custom-start-date-no-rush" />
+                                <input type="checkbox" name="start-date" value="no-rush" id="custom-start-date-no-rush" @if(old('start-date') == 'no-rush') checked @endif />
                                 <label for="custom-start-date-no-rush">No huge rush</label>
                             </div>
                         </div>
@@ -176,17 +176,17 @@
                             <select name="launch-month" class="custom-select">
                                 <option value="0">Select month</option>
                                 @for ($i = 1; $i <= 12; $i++)
-                                <option value="{{$i}}">{{Carbon\Carbon::now()->month($i)->isoFormat('MMMM')}}</option>
+                                <option value="{{$i}}" @if(old('launch-month') == $i) selected @endif>{{Carbon\Carbon::now()->month($i)->isoFormat('MMMM')}}</option>
                                 @endfor
                             </select>
                             <select name="launch-year" class="custom-select">
                                 <option value="0">Select year</option>
                                 @for ($i = date('Y'); $i < (date('Y')+3); $i++)
-                                <option value="{{$i}}">{{$i}}</option>
+                                <option value="{{$i}}" @if(old('launch-year') == $i) selected @endif>{{$i}}</option>
                                 @endfor
                             </select>
                             <div class="lt-custom-control lt-custom-checkbox btn-check">
-                                <input type="checkbox" name="launch-date" value="no-rush" id="custom-launch-date-no-rush" />
+                                <input type="checkbox" name="launch-date" value="no-rush" id="custom-launch-date-no-rush" @if(old('launch-date') == 'no-rush') checked @endif />
                                 <label for="custom-launch-date-no-rush">When it's done!</label>
                             </div>
                         </div>
@@ -197,15 +197,15 @@
                         <legend>Likely budget</legend>
                         <div class="input-group justify">
                             <div class="lt-custom-control lt-custom-radio btn-check">
-                                <input type="radio" id="custom-btn-budget-basic" name="budget-type" value="basic" />
+                                <input type="radio" id="custom-btn-budget-basic" name="budget-type" value="basic" @if(old('budget-type') == 'basic') checked @endif/>
                                 <label for="custom-btn-budget-basic">$1,000 - $2,000</label>
                             </div>
                             <div class="lt-custom-control lt-custom-radio btn-check">
-                                <input type="radio" id="custom-btn-budget-pro" name="budget-type" value="pro" />
+                                <input type="radio" id="custom-btn-budget-pro" name="budget-type" value="pro" @if(old('budget-type') == 'pro') checked @endif />
                                 <label for="custom-btn-budget-pro">$5,000 - $10,000</label>
                             </div>
                             <div class="lt-custom-control lt-custom-radio btn-check">
-                                <input type="radio" id="custom-btn-budget-e" name="budget-type" value="enterprise" />
+                                <input type="radio" id="custom-btn-budget-e" name="budget-type" value="enterprise" @if(old('budget-type') == 'enterprise') checked @endif />
                                 <label for="custom-btn-budget-e">Over $10,000</label>
                             </div>
                         </div>

@@ -69,6 +69,11 @@ class ProjectsController extends Controller
                         ? $budgetTypes[$request->get('budget-type')]
                         : 0;
 
+        $allowedTypes = ['website', 'app', 'other'];
+        if (!in_array($request->get('project-type'), $allowedTypes)) {
+            return redirect()->back()->withErrors(['invalid-field' => __('Invalid project type')])->withInput();
+        }
+
         $projectRequest = new ProjectRequest([
             'name'  => $request->get('name'),
             'email' => $request->get('email', 'johndoe@domain.com'),
@@ -77,7 +82,7 @@ class ProjectsController extends Controller
             'type' => $request->get('project-type'),
             'project_needs' => json_encode($request->get('needs')),
             'ip_address' => $request->ip(),
-            'user_agent' => $request->server('User-Agent'),
+            'user_agent' => $request->header('User-Agent'),
             'start_date' => $startDate,
             'launch_date' => $launchDate,
             'budget' => $budgetType,

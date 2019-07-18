@@ -72,12 +72,13 @@ class SetLocaleMiddleware
      */
     private function detectLocaleByIp($request)
     {
+        $ip = $request->ip();
         $locale = config('app.fallback_locale');
         $databasePath = storage_path('app/GeoLite2-Country.mmdb');
 
         try {
             $reader = new Reader($databasePath);
-            $record = $reader->country(request()->ip());
+            $record = $reader->country($ip);
             $locale = strtolower($record->country->isoCode);
         } catch (\Exception $e) {
             \Log::error($e);
