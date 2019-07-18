@@ -29,12 +29,6 @@ class ProjectsController extends Controller
 
     public function submitProject(Request $request)
     {
-        // name, email, project-type, description,
-        // needs[design, development],
-
-        // budget-type, phone, start-month, start-year, start-date
-        // launch-month, launch-year, launch-date
-
         $validator = Validator::make($request->all(), [
             'name'  => 'required',
             'email' => 'required|email',
@@ -65,6 +59,16 @@ class ProjectsController extends Controller
                 );
         }
 
+        $budgetTypes = [
+            'basic' => 0,
+            'pro' => 1,
+            'enterprise' => 2
+        ];
+
+        $budgetType = array_key_exists($request->get('budget-type'), $budgetTypes)
+                        ? $budgetTypes[$request->get('budget-type')]
+                        : 0;
+
         $projectRequest = new ProjectRequest([
             'name'  => $request->get('name'),
             'email' => $request->get('email', 'johndoe@domain.com'),
@@ -76,12 +80,25 @@ class ProjectsController extends Controller
             'user_agent' => $request->server('User-Agent'),
             'start_date' => $startDate,
             'launch_date' => $launchDate,
-            'budget' => $request->get('budget-type', 0)
+            'budget' => $budgetType,
         ]);
 
         $projectRequest->save();
 
-        dd($projectRequest);
+        session()->flash('project-request', $projectRequest->id);
+
+        return redirect()->route('project-planner-success');
+    }
+
+    public function getPlannerSuccess()
+    {
+        $requestId = session()->get('project-request');
+
+        if ($requestId < 1) {
+            return redirect()->route('project-planner');
+        }
+
+        return view('page.planner-complete');
     }
 
     public function getProject($projectSlug)

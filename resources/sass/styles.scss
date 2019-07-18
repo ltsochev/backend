@@ -20,6 +20,17 @@
         font-weight: bold;
         text-transform: none;
     }
+
+    > article > header > .icon {
+        text-align: center;
+        margin-bottom: 1.875rem;
+
+        .fa,.far {
+            font-size: 4rem;
+            color: $green;
+            font-weight: bold;
+        }
+    }
 }
 
 .container-fluid .section-block {

@@ -16,6 +16,7 @@ Route::get('/', 'SiteController@index');
 Route::group(['prefix' => 'projects'], function ($router) {
     $router->get('planner', 'ProjectsController@getPlanner')->name('project-planner');
     $router->post('planner/submit', 'ProjectsController@submitProject')->name('project-submit');
+    $router->get('planner/complete', 'ProjectsController@getPlannerSuccess')->name('project-planner-success');
 
     $router->get('details/{project}', 'ProjectsController@getProject')->name('project');
 });

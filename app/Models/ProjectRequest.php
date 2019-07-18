@@ -9,6 +9,6 @@ class ProjectRequest extends Model
     protected $table = 'project_requests';
     protected $fillable = [
         'name', 'email', 'phone', 'description', 'type', 'project_needs',
-        'start_date', 'launch_date', 'ip_address', 'user_agent'
+        'start_date', 'launch_date', 'ip_address', 'user_agent', 'budget'
     ];
 }

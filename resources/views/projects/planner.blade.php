@@ -35,6 +35,11 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
+            @include('layouts.flash-messages')
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
             <form method="post" action="<?= route('project-submit'); ?>">
                 <section class="section-block">
                     <fieldset class="personal-details input-row">
