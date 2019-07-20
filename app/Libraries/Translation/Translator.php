@@ -5,6 +5,7 @@ namespace App\Libraries\Translation;
 use Illuminate\Contracts\Translation\Loader;
 use Illuminate\Contracts\Translation\Translator as TranslatorContract;
 use Illuminate\Translation\Translator as LaravelTranslator;
+use Psr\SimpleCache\CacheInterface;
 
 final class Translator implements TranslatorContract
 {
@@ -16,13 +17,21 @@ final class Translator implements TranslatorContract
     private $laravelTranslator;
 
     /**
+     * Instance of a cache repository
+     *
+     * @var \Psr\SimpleCache\CacheInterface
+     */
+    private $cacheRepository;
+
+    /**
      * Creates an instance of the translator
      *
      * @param   \Illuminate\Contracts\Translation\Loader    $loader
      * @param   string  $locale
      */
-    public function __construct(Loader $loader, $locale)
+    public function __construct(Loader $loader, CacheInterface $cache, $locale)
     {
+        $this->cacheRepository = $cache;
         $this->laravelTranslator = new LaravelTranslator($loader, $locale);
     }
 
@@ -66,5 +75,16 @@ final class Translator implements TranslatorContract
     public function transChoice($key, $number, array $replace = [], $locale = NULL)
     {
         return $this->laravelTranslator->transChoice($key, $number, $replace, $locale);
+    }
+
+    public function addNamespace($namespace, $hint)
+    {
+        $this->laravelTranslator->addNamespace($namespace, $hint);
+    }
+
+    public function export($locale)
+    {
+        $exporter = new PhrasesExporter();
+        $exporter->run($locale);
     }
 }
