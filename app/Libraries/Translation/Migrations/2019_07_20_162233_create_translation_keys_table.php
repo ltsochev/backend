@@ -15,7 +15,7 @@ class CreateTranslationKeysTable extends Migration
     {
         Schema::create('translation_keys', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('key')->index();
+            $table->string('key')->unique();
             $table->bigInteger('user_id')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

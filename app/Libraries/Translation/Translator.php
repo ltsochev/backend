@@ -2,10 +2,13 @@
 
 namespace App\Libraries\Translation;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Translation\Loader;
 use Illuminate\Contracts\Translation\Translator as TranslatorContract;
 use Illuminate\Translation\Translator as LaravelTranslator;
 use Psr\SimpleCache\CacheInterface;
+
+use App\Libraries\Translation\Models\TranslationKey;
 
 final class Translator implements TranslatorContract
 {
@@ -77,6 +80,34 @@ final class Translator implements TranslatorContract
         return $this->laravelTranslator->transChoice($key, $number, $replace, $locale);
     }
 
+    // @todo This is a probematic function because it will attempt to create translation
+    // when the phrase is not created and the database will send critical error
+    // re-evaluate this method!
+    public function searchTranslated($key, array $params = [], $locale = null)
+    {
+        if (is_null($locale))
+        {
+            $locale = $this->laravelTranslator->getLocale();
+        }
+
+        $translation = $this->findInCache($key, $locale);
+        if (is_null($translation))
+        {
+            $translation = $this->findInDatabase($key, $locale);
+            if (is_null($translation))
+            {
+                $translation = $this->addPhrase($key);
+            }
+
+            $this->cacheRepository->set($this->getCacheKey($key, $locale), $translation, Carbon::now()->addHours(24)->endOfDay());
+        }
+    }
+
+    public function addPhrase($source)
+    {
+        return TranslationKey::make($source);
+    }
+
     public function addNamespace($namespace, $hint)
     {
         $this->laravelTranslator->addNamespace($namespace, $hint);
@@ -86,5 +117,22 @@ final class Translator implements TranslatorContract
     {
         $exporter = new PhrasesExporter();
         $exporter->run($locale);
+    }
+
+    private function findInCache($key, $locale)
+    {
+        $cacheKey = $this->getCacheKey($key, $locale);
+
+        return $this->cacheRepository->get($cacheKey);
+    }
+
+    private function findInDatabase($key, $locale)
+    {
+        return TranslationKey::findTranslation($key, $locale);
+    }
+
+    private function getCacheKey($key, $locale)
+    {
+        return 'ltsochev.translation.' . $locale . '.' . sha1($key);
     }
 }

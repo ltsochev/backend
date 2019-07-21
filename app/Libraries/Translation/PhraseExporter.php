@@ -38,7 +38,7 @@ final class PhrasesExporter
         if (count($store) > 0) {
             $filepath = $this->getFilePath($locale);
 
-            Storage::put($filepath, var_export($store, true));
+            Storage::put($filepath, json_encode($store, JSON_NUMERIC_CHECK));
         }
 
         return $store;
@@ -54,6 +54,6 @@ final class PhrasesExporter
 
     public function getFilePath($locale)
     {
-        return sprintf('%s/%s/all.php', $this->savePath, $locale);
+        return sprintf('%s/%s.json', $this->savePath, $locale);
     }
 }
