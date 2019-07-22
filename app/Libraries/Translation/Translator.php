@@ -70,20 +70,44 @@ final class Translator implements TranslatorContract
         return $this->laravelTranslator->getFromJson(...$arguments);
     }
 
-    public function trans($key, array $replace = [], $locale = NULL)
+    public function trans($key, array $replace = [], $locale = null)
     {
-        return $this->laravelTranslator->trans($key, $replace, $locale);
+        dd('yarr');
+        return $this->get($key, $replace, $locale);
     }
 
-    public function transChoice($key, $number, array $replace = [], $locale = NULL)
+    public function transChoice($key, $number, array $replace = [], $locale = null)
     {
+        dd('yarr');
         return $this->laravelTranslator->transChoice($key, $number, $replace, $locale);
     }
 
-    // @todo This is a probematic function because it will attempt to create translation
-    // when the phrase is not created and the database will send critical error
-    // re-evaluate this method!
-    public function searchTranslated($key, array $params = [], $locale = null)
+    public function get($key, array $replace = [], $locale = null, $fallback = true)
+    {
+        [$namespace, $group, $item] = $this->laravelTranslator->parseKey($key);
+
+        $locales = $fallback ? $this->laravelTranslator->localeArray($locale)
+                             : [$locale ?: $this->locale];
+
+        foreach ($locales as $locale) {
+            if (! is_null($line = $this->laravelTranslator->getLine(
+                $namespace, $group, $locale, $item, $replace
+            ))) {
+                break;
+            }
+        }
+
+        if (!$line) {
+            $line = $this->laravelTranslator->makeReplacements(
+                $this->searchTranslated($key, $locale),
+                $replace
+            );
+        }
+
+        return $line;
+    }
+
+    public function searchTranslated($key, $locale = null)
     {
         if (is_null($locale))
         {
@@ -91,21 +115,18 @@ final class Translator implements TranslatorContract
         }
 
         $translation = $this->findInCache($key, $locale);
-        if (is_null($translation))
-        {
+        if (is_null($translation)) {
             $translation = $this->findInDatabase($key, $locale);
-            if (is_null($translation))
-            {
-                $translation = $this->addPhrase($key);
+            if ($translation instanceof Translation) {
+                $this->cacheRepository->set($this->getCacheKey($key, $locale), $translation, 86400);
             }
-
-            $this->cacheRepository->set($this->getCacheKey($key, $locale), $translation, Carbon::now()->addHours(24)->endOfDay());
         }
-    }
 
-    public function addPhrase($source)
-    {
-        return TranslationKey::make($source);
+        if (!\is_null($translation) && $translation !== false) {
+            return $translation;
+        }
+
+        return $key;
     }
 
     public function addNamespace($namespace, $hint)
@@ -128,11 +149,28 @@ final class Translator implements TranslatorContract
 
     private function findInDatabase($key, $locale)
     {
-        return TranslationKey::findTranslation($key, $locale);
+        $source = TranslationKey::firstOrCreate(['key' => $key]);
+        if (!$source->active()) {
+            return false;
+        }
+
+        $translation = $source->translations()->where('locale', '=', $locale)->first();
+        if (\is_null($translation) || !$translation->isTranslated()) {
+            return null;
+        }
+
+        return $translation;
     }
 
+    /**
+     * Generates an unique cache key for a given phrase
+     *
+     * @param string $key
+     * @param string $locale
+     * @return string
+     */
     private function getCacheKey($key, $locale)
     {
-        return 'ltsochev.translation.' . $locale . '.' . sha1($key);
+        return 'ltsochev.translation.phrase.' . $locale . '.' . sha1($key);
     }
 }

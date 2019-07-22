@@ -11,11 +11,11 @@
                 </button>
                 <div class="justify-content-end collapse navbar-collapse" id="nav-main-menu">
                     <ul class="nav-menu navbar-nav">
-                        <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link active">Home</a></li>
-                        <li class="nav-menu-item nav-item"><a href="#about" class="nav-link">About</a></li>
-                        <li class="nav-menu-item nav-item"><a href="#services" class="nav-link">Services</a></li>
-                        <li class="nav-menu-item nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                        <li class="nav-menu-item nav-item"><a href="#contacts" class="nav-link">Contacts</a></li>
+                        <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link active">@lang('Home')</a></li>
+                        <li class="nav-menu-item nav-item"><a href="#about" class="nav-link">@lang('About')</a></li>
+                        <li class="nav-menu-item nav-item"><a href="#services" class="nav-link">@lang('Services')</a></li>
+                        <li class="nav-menu-item nav-item"><a href="#projects" class="nav-link">@lang('Projects')</a></li>
+                        <li class="nav-menu-item nav-item"><a href="#contacts" class="nav-link">@lang('contacts')</a></li>
                     </ul>
                 </div>
             </nav>

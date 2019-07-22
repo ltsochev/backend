@@ -28,4 +28,14 @@ class Translation extends Model
     {
         $this->belongsTo(TranslationKey::class);
     }
+
+    public function isTranslated()
+    {
+        return mb_strlen($this->translated) > 0;
+    }
+
+    public function __toString()
+    {
+        return $this->isTranslated() ? $this->translated : $this->source->key;
+    }
 }

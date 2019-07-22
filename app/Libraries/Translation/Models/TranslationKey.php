@@ -49,6 +49,11 @@ class TranslationKey extends Model
         });
     }
 
+    public function active()
+    {
+        return $this->status > 0;
+    }
+
     private function getUserModelClass()
     {
         return config('auth.providers.users.model', \App\User::class);
