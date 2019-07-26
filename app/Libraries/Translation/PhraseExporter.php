@@ -2,6 +2,7 @@
 
 namespace App\Libraries\Translation;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use App\Libraries\Translation\Models\Translation;
 use App\Libraries\Translation\Models\TranslationKey;
@@ -21,7 +22,7 @@ final class PhrasesExporter
 
     public function run($locale)
     {
-        $store = [];
+        $store = new Collection();
         $sourceTable = (new TranslationKey)->getTable();
         $translationsTable = (new Translation)->getTable();
 
@@ -31,14 +32,15 @@ final class PhrasesExporter
                     ->where($translationsTable . '.locale', '=', $locale);
             })->chunk(150, function($phrases) use ($store) {
                 foreach ($phrases as $row) {
-                    $store[$row->key] = $row->translated;
+                    $store->put($row->key, $row->translated);
                 }
-        });
+            });
+
 
         if (count($store) > 0) {
             $filepath = $this->getFilePath($locale);
 
-            Storage::put($filepath, json_encode($store, JSON_NUMERIC_CHECK));
+            file_put_contents($filepath, json_encode($store, JSON_NUMERIC_CHECK));
         }
 
         return $store;

@@ -49,7 +49,7 @@ class TranslationKey extends Model
         });
     }
 
-    public function active()
+    public function isActive()
     {
         return $this->status > 0;
     }

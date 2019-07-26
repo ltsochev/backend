@@ -6,19 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Translation\Loader;
 use Illuminate\Contracts\Translation\Translator as TranslatorContract;
 use Illuminate\Translation\Translator as LaravelTranslator;
+use Illuminate\Support\Arr;
 use Psr\SimpleCache\CacheInterface;
 
 use App\Libraries\Translation\Models\TranslationKey;
 
-final class Translator implements TranslatorContract
+final class Translator extends LaravelTranslator
 {
-    /**
-     * Instance of the original Laravel translator
-     *
-     * @var \Illuminate\Translation\Translator
-     */
-    private $laravelTranslator;
-
     /**
      * Instance of a cache repository
      *
@@ -26,79 +20,50 @@ final class Translator implements TranslatorContract
      */
     private $cacheRepository;
 
-    /**
-     * Creates an instance of the translator
-     *
-     * @param   \Illuminate\Contracts\Translation\Loader    $loader
-     * @param   string  $locale
-     */
     public function __construct(Loader $loader, CacheInterface $cache, $locale)
     {
+        parent::__construct($loader, $locale);
+
         $this->cacheRepository = $cache;
-        $this->laravelTranslator = new LaravelTranslator($loader, $locale);
     }
 
-    /**
-     * Sets the global app locale
-     *
-     * @param   string  $locale
-     * @return  void
-     */
-    public function setLocale($locale)
+    public function getFromJson($key, array $replace = [], $locale = null)
     {
-        $this->laravelTranslator->setLocale($locale);
-    }
+        $locale = $locale ?: $this->getLocale();
 
-    /**
-     * Sets the global fallback locale
-     *
-     * @param   string  $locale
-     * @return  void
-     */
-    public function setFallback($locale)
-    {
-        $this->laravelTranslator->setFallback($locale);
-    }
+        $this->load('*', '*', $locale);
 
-    public function getLocale()
-    {
-        return $this->laravelTranslator->getLocale();
-    }
+        $line = $this->loaded['*']['*'][$locale][$key] ?? null;
 
-    public function getFromJson(...$arguments)
-    {
-        return $this->laravelTranslator->getFromJson(...$arguments);
-    }
+        if (!isset($line)) {
+            $fallback = $this->get($key, $replace, $locale);
 
-    public function trans($key, array $replace = [], $locale = null)
-    {
-        dd('yarr');
-        return $this->get($key, $replace, $locale);
-    }
+            if ($fallback !== $key) {
+                return $fallback;
+            }
+        }
 
-    public function transChoice($key, $number, array $replace = [], $locale = null)
-    {
-        dd('yarr');
-        return $this->laravelTranslator->transChoice($key, $number, $replace, $locale);
+        return $this->makeReplacements($line ?: $key, $replace);
     }
 
     public function get($key, array $replace = [], $locale = null, $fallback = true)
     {
-        [$namespace, $group, $item] = $this->laravelTranslator->parseKey($key);
+        [$namespace, $group, $item] = $this->parseKey($key);
 
-        $locales = $fallback ? $this->laravelTranslator->localeArray($locale)
-                             : [$locale ?: $this->locale];
 
-        foreach ($locales as $locale) {
-            if (! is_null($line = $this->laravelTranslator->getLine(
-                $namespace, $group, $locale, $item, $replace
+        $locales = $fallback ? $this->localeArray($locale)
+        : [$locale ?: $this->locale];
+
+        foreach ($locales as $allowedLocale) {
+            if (! is_null($line = $this->getLine(
+                $namespace, $group, $allowedLocale, $item, $replace
             ))) {
                 break;
             }
         }
 
         if (!$line) {
-            $line = $this->laravelTranslator->makeReplacements(
+            $line = $this->makeReplacements(
                 $this->searchTranslated($key, $locale),
                 $replace
             );
@@ -109,10 +74,7 @@ final class Translator implements TranslatorContract
 
     public function searchTranslated($key, $locale = null)
     {
-        if (is_null($locale))
-        {
-            $locale = $this->laravelTranslator->getLocale();
-        }
+        $locale = $locale ?: $this->getLocale();
 
         $translation = $this->findInCache($key, $locale);
         if (is_null($translation)) {
@@ -127,11 +89,6 @@ final class Translator implements TranslatorContract
         }
 
         return $key;
-    }
-
-    public function addNamespace($namespace, $hint)
-    {
-        $this->laravelTranslator->addNamespace($namespace, $hint);
     }
 
     public function export($locale)
