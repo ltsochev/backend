@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{app()->getLocale()}}">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -27,7 +27,7 @@
 
             @section('footer')
             <footer class="page-footer">
-                <p>Copyright © 2019 Lachezar Tsochev IT Solutions. All rights reserved.</p>
+                <p>Copyright &copy {{date('Y')}} Lachezar Tsochev IT Solutions. All rights reserved.</p>
             </footer>
             @show
         </div>

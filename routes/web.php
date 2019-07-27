@@ -21,7 +21,8 @@ Route::group(['prefix' => 'projects'], function ($router) {
     $router->get('details/{project}', 'ProjectsController@getProject')->name('project');
 });
 
-Route::get('admin/login', 'AuthController@getLogin');
+Route::get('admin/login', 'Auth\\LoginController@showLoginForm')->name('login');
+Route::post('admin/login', 'Auth\\LoginController@login');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
     $router->get('/', 'DashboardController@getIndex');
