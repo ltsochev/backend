@@ -1,0 +1,203 @@
+$sidebar-width: 14rem;
+$topbar-height: 4.375rem;
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+    width: $sidebar-width;
+    min-height: 100vh;
+
+    .sidebar-brand {
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
+
+    .sidebar-divider {
+        margin: 0 1rem 1rem;
+        border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .sidebar-heading {
+        color: rgba(255,255,255,.4);
+        padding: 0 1rem;
+        font-weight: 800;
+        font-size: .65rem;
+        text-transform: uppercase;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        > li.nav-item {
+            position: relative;
+
+            .nav-link {
+                color: rgba(255,255,255,.8);
+                display: block;
+                text-align: left;
+                padding: 1rem;
+                width: $sidebar-width;
+
+                &[data-toggle=collapse]::after {
+                    width: 1rem;
+                    text-align: center;
+                    float: right;
+                    vertical-align: 0;
+                    border: 0;
+                    font-weight: 900;
+                    content: '\f107';
+                    font-family: 'Font Awesome 5 Free';
+                    color: rgba(255,255,255,.5);
+                }
+
+                &[data-toggle=collapse].collapsed::after {
+                    content: '\f105';
+                }
+
+                span {
+                    font-size: .85rem;
+                    display: inline;
+                }
+            }
+
+            &.active {
+                .nav-link {
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .collapse, .collapsing {
+            margin: 0 1rem;
+            position: relative;
+            left: 0;
+            z-index: 1;
+            top: 0;
+
+            &:not(.show) {
+                display: none;
+            }
+
+            .collapse-inner {
+                padding: .5rem 0;
+                min-width: 10rem;
+                font-size: .85rem;
+                margin: 0 0 1rem 0;
+                box-shadow: none;
+
+                .collapse-header {
+                    margin: 0;
+                    white-space: nowrap;
+                    padding: .5rem 1.5rem;
+                    text-transform: uppercase;
+                    font-weight: 800;
+                    font-size: .65rem;
+                    color: #b7b9cc;
+                }
+
+                .collapse-item {
+                    padding: .5rem 1rem;
+                    margin: 0 .5rem;
+                    display: block;
+                    color: #3a3b45;
+                    text-decoration: none;
+                    border-radius: .35rem;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        .collapsing {
+            margin: 0 1rem;
+            display: block;
+            transition: height .15s ease;
+        }
+    }
+
+    .sidebar-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        background-color: lighten(#343a40, 20%);
+
+        &:hover {
+            background-color: lighten(#343a40, 35%);
+        }
+
+        &::after {
+            font-weight: 900;
+            content: '\f104';
+            font-family: 'Font Awesome 5 Free';
+            margin-right: .1rem;
+            color: rgba(255,255,255,.5);
+        }
+
+        &.toggled {
+            &::after {
+                content: '\f105';
+            }
+        }
+    }
+}
+
+.content-wrapper {
+    width: 100%;
+    .content {
+        flex: 1 0 auto;
+    }
+}
+
+.topbar {
+    height: $topbar-height;
+
+    .dropdown {
+        position: relative;
+    }
+
+    .topbar-divider {
+        width: 0;
+        border-right: 1px solid #e3e6f0;
+        height: calc(#{$topbar-height} - 2rem);
+        margin: auto 1rem;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+
+        .nav-item {
+            .nav-link {
+                height: $topbar-height;
+                display: flex;
+                align-items: center;
+                padding: 0 .75rem;
+            }
+
+            &.no-arrow {
+                .nav-link {
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

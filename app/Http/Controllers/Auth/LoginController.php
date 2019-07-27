@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use function App\Support\seo;
 
 class LoginController extends Controller
 {
@@ -44,6 +45,8 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
+        seo()->setTitle('LTsochev - Login');
+
         return view('admin.login');
     }
 }

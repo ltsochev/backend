@@ -23,7 +23,8 @@ Route::group(['prefix' => 'projects'], function ($router) {
 
 Route::get('admin/login', 'Auth\\LoginController@showLoginForm')->name('login');
 Route::post('admin/login', 'Auth\\LoginController@login');
+Route::get('admin/logout', 'Auth\\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
-    $router->get('/', 'DashboardController@getIndex');
+    $router->get('/', 'DashboardController@getIndex')->name('admin.dashboard');
 });

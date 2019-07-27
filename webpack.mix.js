@@ -17,8 +17,11 @@ mix.options({
 
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/app-minimal.js', 'public/js')
+   .js('resources/js/bootstrap.js', 'public/js')
    .sass('resources/sass/styles.scss', 'public/css')
    .sass('resources/sass/planner.scss', 'public/css')
    .sass('resources/sass/project.scss', 'public/css')
+   .sass('resources/sass/bootstrap.scss', 'public/css')
+   .sass('resources/sass/admin.scss', 'public/css')
 
 mix.copyDirectory('resources/assets', 'public/assets');
