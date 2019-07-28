@@ -3,6 +3,7 @@
 namespace App\Libraries\Translation\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Libraries\Translation\Collection;
 
 class TranslationKey extends Model
 {
@@ -54,9 +55,31 @@ class TranslationKey extends Model
         return $this->status > 0;
     }
 
+    public function setLocaleTranslation($locale, $translation)
+    {
+        if (\mb_strlen($translation) == 0) {
+            return false;
+        }
+
+        $model = Translation::make($this, $locale, $translation);
+        $model->translated = $translation;
+        $model->save();
+
+        return $model;
+    }
+
+    public function getLocaleTranslation($locale)
+    {
+        return $this->translations->where('locale', $locale)->first();
+    }
+
     private function getUserModelClass()
     {
         return config('auth.providers.users.model', \App\User::class);
+    }
 
+    public function newCollection(array $models = [])
+    {
+        return new Collection($models);
     }
 }

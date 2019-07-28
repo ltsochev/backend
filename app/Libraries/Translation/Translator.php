@@ -96,10 +96,22 @@ final class Translator extends LaravelTranslator
         return TranslationKey::with('translations')->orderBy('id', 'DESC')->get();
     }
 
+    public function getModelInstance()
+    {
+        return new TranslationKey();
+    }
+
     public function export($locale)
     {
         $exporter = new PhrasesExporter();
         $exporter->run($locale);
+    }
+
+    public function clearCache($key, $locale)
+    {
+        $cacheKey = $this->getCacheKey($key, $locale);
+
+        $this->cacheRepository->delete($cacheKey);
     }
 
     private function findInCache($key, $locale)

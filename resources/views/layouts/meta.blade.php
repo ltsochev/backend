@@ -27,7 +27,7 @@
 
             @section('footer')
             <footer class="page-footer">
-                <p>Copyright &copy {{date('Y')}} Lachezar Tsochev IT Solutions. All rights reserved.</p>
+                <p>@lang('Copyright &copy; :year Lachezar Tsochev IT Solutions. All rights reserved', ['year' => date('Y')]).</p>
             </footer>
             @show
         </div>

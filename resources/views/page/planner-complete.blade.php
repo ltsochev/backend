@@ -20,8 +20,8 @@
                         <div class="icon">
                             <i class="far fa-check-circle"></i>
                         </div>
-                        <h1>Thank you!</h1>
-                        <h2>Your request has been accepted and I'll contact you for further information!</h2>
+                        <h1>@lang('Thank you!')</h1>
+                        <h2>@lang('Your request has been accepted and I'll contact you for further information!')</h2>
                     </header>
                 </article>
             </section>

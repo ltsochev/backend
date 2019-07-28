@@ -206,3 +206,21 @@ h3 {
     padding: 2rem 0;
     flex-shrink: 0;
 }
+
+.table-translations {
+    td {
+        width: 20%;
+
+        textarea {
+            display: block;
+            width: 100%;
+            min-height: 200px;
+            resize: none;
+        }
+    }
+}
+
+.custom-control-input:checked~.custom-control-indicator{
+    color:white;
+    background-color:red;
+}

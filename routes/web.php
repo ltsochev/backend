@@ -31,5 +31,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     $router->group(['prefix' => 'translations'], function ($router) {
         $router->get('all', 'TranslationController@getIndex')->name('admin.translations.index');
         $router->get('export/all', 'TranslationController@exportAll')->name('admin.translations.export');
+
+        $router->post('save', 'TranslationController@saveSingle')->name('admin.translations.save');
+        $router->post('delete', 'TranslationController@deleteSingle')->name('admin.translations.delete');
     });
+
+    $router->get('projects/requests', 'ProjectsController@getRequests')->name('admin.projects.requests');
 });

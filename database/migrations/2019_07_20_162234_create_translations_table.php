@@ -17,7 +17,7 @@ class CreateTranslationsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('translation_id');
             $table->string('locale');
-            $table->text('translated');
+            $table->text('translated')->nullable();
             $table->timestamps();
 
             $table->unique(['translation_id', 'locale'], 'translation');

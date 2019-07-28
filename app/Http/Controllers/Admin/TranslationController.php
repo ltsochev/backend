@@ -22,6 +22,8 @@ class TranslationController extends Controller
 
         $phrases = $this->translator->all();
 
+        $phrases->load('translations');
+
         return view('admin.translation.all')->with(compact('phrases'));
     }
 
@@ -35,5 +37,44 @@ class TranslationController extends Controller
         }
 
         return 'дън';
+    }
+
+    public function saveSingle(Request $request)
+    {
+        $model = $this->translator->getModelInstance();
+
+        $translation = $model->find($request->get('phrase'));
+        if (is_null($translation))
+        {
+            abort(404);
+        }
+
+        $translation->status = $request->get('status', 0);
+
+        foreach ($request->get('locale', []) as $locale => $trans) {
+            if ($translation->setLocaleTranslation($locale, $trans) !== false) {
+                $translation->translated_at = \Carbon\Carbon::now();
+                $this->translator->clearCache($translation->key, $locale);
+            }
+        }
+
+        $translation->save();
+
+        return response()->json(['status' => 10, 'message' => 'Job done.']);
+    }
+
+    public function deleteSingle(Request $request)
+    {
+        $model = $this->translator->getModelInstance();
+
+        $translation = $model->find($request->get('phrase'));
+        if (is_null($translation)) {
+            abort(404);
+        }
+
+        $translation->translations()->delete();
+        $translation->delete();
+
+        return response()->json(['status' => 10, 'message' => 'job done']);
     }
 }

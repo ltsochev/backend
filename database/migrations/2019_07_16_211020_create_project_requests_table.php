@@ -26,6 +26,7 @@ class CreateProjectRequestsTable extends Migration
             $table->timestamp('start_date')->nullable();
             $table->timestamp('launch_date')->nullable();
             $table->integer('budget');
+            $table->tinyInteger('status')->default(0);
 
             $table->timestamps();
         });

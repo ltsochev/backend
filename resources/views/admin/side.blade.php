@@ -18,10 +18,16 @@
     <hr class="sidebar-divider" />
 
     <div class="sidebar-heading">
-        Interface
+        General
     </div>
 
     <ul class="nav-list">
+        <li class="nav-item {{ App\Support\set_active('admin/projects/requests') }}">
+            <a class="nav-link" href="{{ route('admin.projects.requests') }}">
+                <i class="fas fa-fw fa-project-diagram"></i>
+                <span>Project requests</span>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
