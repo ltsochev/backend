@@ -91,6 +91,11 @@ final class Translator extends LaravelTranslator
         return $key;
     }
 
+    public function all()
+    {
+        return TranslationKey::with('translations')->orderBy('id', 'DESC')->get();
+    }
+
     public function export($locale)
     {
         $exporter = new PhrasesExporter();

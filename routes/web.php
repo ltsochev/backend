@@ -27,4 +27,9 @@ Route::get('admin/logout', 'Auth\\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
     $router->get('/', 'DashboardController@getIndex')->name('admin.dashboard');
+
+    $router->group(['prefix' => 'translations'], function ($router) {
+        $router->get('all', 'TranslationController@getIndex')->name('admin.translations.index');
+        $router->get('export/all', 'TranslationController@exportAll')->name('admin.translations.export');
+    });
 });

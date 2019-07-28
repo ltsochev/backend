@@ -8,7 +8,7 @@
     <hr class="sidebar-divider my-0" />
 
     <ul class="nav-list">
-        <li class="nav-item active">
+        <li class="nav-item {{ App\Support\set_active('admin') }}">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -44,7 +44,7 @@
     </div>
 
     <ul class="nav-list">
-        <li class="nav-item">
+        <li class="nav-item {{ App\Support\set_active('admin/translations/*') }}">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse-translations" aria-expanded="true" aria-controls="collapse-translations">
                 <i class="fas fa-fw fa-globe-europe"></i>
                 <span>Locales</span>
@@ -52,7 +52,8 @@
             <div id="collapse-translations" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Pick a locale</h6>
-                    <a class="collapse-item" href="#">View all</a>
+                    <a class="collapse-item" href="{{ route('admin.translations.index') }}">View all</a>
+                    <a class="collapse-item" href="{{ route('admin.translations.export') }}">Export all</a>
                     <a class="collapse-item" href="#">English</a>
                     <a class="collapse-item" href="#">Bulgarian</a>
                 </div>
