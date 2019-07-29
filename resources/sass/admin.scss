@@ -207,6 +207,10 @@ h3 {
     flex-shrink: 0;
 }
 
+.table-responsive {
+    overflow: hidden;
+}
+
 .table-translations {
     td {
         width: 20%;
@@ -223,4 +227,12 @@ h3 {
 .custom-control-input:checked~.custom-control-indicator{
     color:white;
     background-color:red;
+}
+
+.table-projects {
+    table-layout: fixed;
+
+    .pagination {
+        justify-content: center;
+    }
 }

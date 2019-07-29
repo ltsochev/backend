@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use function App\Support\seo;
 use App\Models\ProjectRequest;
+use App\Mail\ProjectRequested;
 
 class ProjectsController extends Controller
 {
@@ -91,6 +93,8 @@ class ProjectsController extends Controller
         $projectRequest->save();
 
         session()->flash('project-request', $projectRequest->id);
+
+        Mail::to('ltsochev@live.com')->send(new ProjectRequested($projectRequest));
 
         return redirect()->route('project-planner-success');
     }

@@ -37,4 +37,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     });
 
     $router->get('projects/requests', 'ProjectsController@getRequests')->name('admin.projects.requests');
+    $router->get('projects/details/{project}', 'ProjectsController@getProjectDetails')->name('admin.projects.details');
+
+    $router->get('settings', 'SettingsController@getDashboard')->name('admin.settings.dashboard');
 });
