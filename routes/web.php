@@ -36,8 +36,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         $router->post('delete', 'TranslationController@deleteSingle')->name('admin.translations.delete');
     });
 
-    $router->get('projects/requests', 'ProjectsController@getRequests')->name('admin.projects.requests');
-    $router->get('projects/details/{project}', 'ProjectsController@getProjectDetails')->name('admin.projects.details');
+    $router->group(['prefix' => 'projects'], function ($router) {
+        $router->get('requests', 'ProjectsController@getRequests')->name('admin.projects.requests');
+        $router->get('requests/{status}', 'ProjectsController@getRequestsFiltered')->name('admin.projects.requests.filtered');
+
+        $router->get('details/{project}', 'ProjectsController@getProjectDetails')->name('admin.projects.details');
+
+        $router->get('status/{project}/{status}', 'ProjectsController@updateProjectStatus')->name('admin.projects.update.status');
+
+        $router->get('delete/{project}', 'ProjectsController@deleteProject')->name('admin.projects.delete');
+    });
+
 
     $router->get('settings', 'SettingsController@getDashboard')->name('admin.settings.dashboard');
 });

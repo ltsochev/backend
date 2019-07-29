@@ -9,16 +9,13 @@
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">New</a>
+                <a class="nav-link {{ App\Support\set_active('admin/projects/requests') }}" href="{{ route('admin.projects.requests') }}">New</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Old</a>
+                <a class="nav-link {{ App\Support\set_active('admin/projects/requests/old') }}" href="{{ route('admin.projects.requests.filtered', ['status' => 'old']) }}">Old</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Completed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Deleted</a>
+                <a class="nav-link {{ App\Support\set_active('admin/projects/requests/completed') }}" href="{{ route('admin.projects.requests.filtered', ['status' => 'completed']) }}">Completed</a>
             </li>
         </ul>
     </div>
@@ -34,6 +31,7 @@
                             <th class="text-center">Email</th>
                             <th class="text-center">Project type</th>
                             <th class="text-center">Budget</th>
+                            <th class="text-center">Added at</th>
                             <th class="text-center">Start date</th>
                             <th class="text-center">Launch date</th>
                             <th class="text-center">Details</th>
@@ -41,7 +39,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <td colspan="8" align="center">
+                            <td colspan="9" align="center">
                                 {!! $projects->render() !!}
                             </td>
                         </tr>
@@ -53,7 +51,8 @@
                             <td>{{ $project->name }}</td>
                             <td>{{ $project->email }}</td>
                             <td>{{ $project->type }}</td>
-                            <td>{{ $project->budget }}</td>
+                            <td>{{ $project->budgetHumanReadable() }}</td>
+                            <td>{{ $project->created_at->format('d F, Y') }}</td>
                             <td>{{ $project->getStartDate() }}</td>
                             <td>{{ $project->getLaunchDate() }}</td>
                             <td>

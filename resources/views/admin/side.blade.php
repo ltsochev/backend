@@ -22,7 +22,7 @@
     </div>
 
     <ul class="nav-list">
-        <li class="nav-item {{ App\Support\set_active('admin/projects/requests') }}">
+        <li class="nav-item {{ App\Support\set_active(['admin/projects/requests', 'admin/projects/details/*']) }}">
             <a class="nav-link" href="{{ route('admin.projects.requests') }}">
                 <i class="fas fa-fw fa-project-diagram"></i>
                 <span>Project requests</span>
