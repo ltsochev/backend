@@ -20,6 +20,8 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
+        {!! app(App\Libraries\Schema\Manager::class)->render() !!}
+
     </head>
     <body data-spy="scroll" data-target="#main-menu-scrollspy" data-offset="60">
         <div id="stage" class="site-window {{ !empty($body_class) ? $body_class : '' }}">

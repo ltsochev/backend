@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use function App\Support\seo;
+use Spatie\SchemaOrg\Schema;
+use function App\Support\{seo, schemaOrg};
 
 class SiteController extends Controller
 {
@@ -14,6 +15,10 @@ class SiteController extends Controller
             'site_name' => 'Lachezar Tsochev',
             'locale'    => app()->getLocale()
         ]);
+
+        schemaOrg()->add(Schema::website()
+                        ->url(url('/'))
+                        ->name('Lachezar Tsochev - full-stack developer for hire.'));
 
         return view('page.home');
     }

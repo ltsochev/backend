@@ -14,6 +14,11 @@ function seo()
     return app('ltsochev.seo');
 }
 
+function schemaOrg()
+{
+    return app(\App\Libraries\Schema\Manager::class);
+}
+
 /**
  * Determines if the current user's agent is a crawler bot
  * with a simple RegEx expression

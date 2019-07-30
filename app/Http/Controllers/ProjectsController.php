@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use function App\Support\seo;
+use function App\Support\{seo, schemaOrg};
 use App\Models\ProjectRequest;
 use App\Mail\ProjectRequested;
+use Spatie\SchemaOrg\Schema;
 
 class ProjectsController extends Controller
 {
@@ -135,6 +136,17 @@ class ProjectsController extends Controller
         }
 
         seo()->setTitle(__("How it's made - :project", ['project' => $projectName]));
+
+        $schemaProject = Schema::organization();
+        if (!is_null($project['live_url'])) {
+            $schemaProject->url($project['live_url']);
+        }
+
+        $schemaProject->name($projectName)
+                    ->brand($project['brand'])
+                    ->image(asset($project['image']));
+
+        schemaOrg()->add($schemaProject);
 
         return view('projects.project')->with(compact('project', 'projectName', 'html'));
     }

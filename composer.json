@@ -14,7 +14,8 @@
         "geoip2/geoip2": "~2.0",
         "itsgoingd/clockwork": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/schema-org": "^2.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
