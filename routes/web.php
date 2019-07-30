@@ -47,6 +47,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         $router->get('delete/{project}', 'ProjectsController@deleteProject')->name('admin.projects.delete');
     });
 
-
     $router->get('settings', 'SettingsController@getDashboard')->name('admin.settings.dashboard');
 });

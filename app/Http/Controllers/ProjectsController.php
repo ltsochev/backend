@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use function App\Support\seo;
 use App\Models\ProjectRequest;
 use App\Mail\ProjectRequested;
@@ -112,6 +116,26 @@ class ProjectsController extends Controller
 
     public function getProject($projectSlug)
     {
-        return view('projects.project')->with('project', $projectSlug);
+        $project = config('projects.' . $projectSlug);
+        if (is_null($project)) {
+            abort(404);
+        }
+
+        $projectName = app('translator')->getFromJson($project['name']);
+
+        try {
+            $md = app(\Parsedown::class);
+            $locale = app()->getLocale();
+            $filepath = $project['articles'][$locale];
+            $mdText = Storage::disk('local')->get($filepath);
+            $html = new HtmlString($md->setSafeMode(true)->text($mdText));
+        } catch(FileNotFoundException $e) {
+            Log::error($e);
+            return redirect()->to('/');
+        }
+
+        seo()->setTitle(__("How it's made - :project", ['project' => $projectName]));
+
+        return view('projects.project')->with(compact('project', 'projectName', 'html'));
     }
 }

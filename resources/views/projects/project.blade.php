@@ -17,7 +17,7 @@
             <section class="section-block project-article">
                 <article>
                     <header>
-                        <h1>How it's made - Rio.bg</h1>
+                        <h1>@lang('How it\'s made - :project', ['project' => $projectName])</h1>
                     </header>
                     <div class="row">
                         <div class="col-lg-7">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="feature-list border">
-                                <h3>Technologies used</h3>
+                                <h3>@lang('Technologies used')</h3>
                                 <ul class="features">
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> Git / GitHub</li>
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> PHP 7.x</li>
@@ -51,11 +51,13 @@
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> SEO optimizations</li>
                                 </ul>
                             </div>
+                            @if (!is_null($project['live_url']))
                             <div class="feature-list mt-3 border">
                                 <div class="view-project text-center">
-                                    <a href="https://rio.bg" class="btn btn-primary" target="_blank" rel="external">View live site</a>
+                                    <a href="{{ $project['live_url'] }}" class="btn btn-primary" target="_blank" rel="external">@lang('View live site')</a>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </article>
@@ -63,11 +65,8 @@
             <section class="section-block project-article">
                 <div class="row">
                     <div class="col-lg-12">
-                        <article class="article-body">
-                            <header>
-                                <h2>Summary</h2>
-                            </header>
-                            <p>Once upon a time...I decided to make a shopping platform</p>
+                        <article class="article-body markdown-article">
+                            {{ $html }}
                         </article>
                     </div>
                 </div>
