@@ -20,16 +20,24 @@
                         <h1>@lang('How it\'s made - :project', ['project' => $projectName])</h1>
                     </header>
                     <div class="row">
+                        @if (count($project['slider'] ?? []))
                         <div class="col-lg-7">
                             <div class="slider-gallery">
                                 <img src="{{ asset('assets/img/imac@2x.png') }}" alt="iMac preview image" />
                                 <ul class="slider">
-                                    <li class="image active" style="opacity: 1;"><img src="{{ asset('assets/img/projects/rio.jpg') }}" alt="Rio.bg tourism filtration" /></li>
-                                    <li class="image"><img src="{{ asset('assets/img/projects/rio-2.jpg') }}" alt="Rio.bg homepage" /></li>
-                                    <li class="image"><img src="{{ asset('assets/img/projects/rio-3.jpg') }}" alt="Rio.bg offer view" /></li>
+                                @foreach($project['slider'] as $index => $image)
+                                    @if ($index == 0)
+                                    <li class="image active" style="opacity: 1">
+                                    @else
+                                    <li class="image" style="">
+                                    @endif
+                                        <img src="{{ asset($image['src']) }}" alt="{{ $image['title'] }}" />>
+                                    </li>
+                                @endforeach
                                 </ul>
                             </div>
                         </div>
+                        @endif
                         <div class="col-lg-5">
                             <div class="feature-list border">
                                 <h3>@lang('Technologies used')</h3>

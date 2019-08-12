@@ -32,6 +32,11 @@ return [
         'articles' => [
             'bg' => sprintf('projects/kk-portfolio-bg.md'),
             'en' => sprintf('projects/kk-portfolio-en.md'),
+        ],
+        'slider' => [
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/kk1.png'],
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/kk2.png'],
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/kk3.png'],
         ]
     ],
 
