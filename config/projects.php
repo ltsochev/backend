@@ -10,6 +10,17 @@ return [
         'articles' => [
             'bg' => sprintf('projects/rio-bg.md'),
             'en' => sprintf('projects/rio-en.md'),
+        ],
+        'slider' => [
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/rio.jpg'],
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/rio-2.jpg'],
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/rio-3.jpg'],
+        ],
+        'features' => [
+            'Git / GitHub', 'PHP 7.x', 'NodeJS', 'VueJS / Vuex', 'Laravel 5.x', 'MySQL RDBMS',
+            'Memcached', 'Elasticsearch', 'Mobica SMS', 'Online booking',
+            'Newsletter', 'Image editting tools', 'Social features', 'Analytics', 'SEO Optimizations',
+            'Remarketing'
         ]
     ],
 
@@ -37,6 +48,11 @@ return [
             ['title' => 'Homepage', 'src' => '/assets/img/projects/kk1.png'],
             ['title' => 'Homepage', 'src' => '/assets/img/projects/kk2.png'],
             ['title' => 'Homepage', 'src' => '/assets/img/projects/kk3.png'],
+        ],
+        'features' => [
+            'Git / Bitbucket', 'PHP 7.x', 'NodeJS', 'VueJS', 'Laravel 5.x', 'SQLite', 'Memcached',
+            'AWS S3', 'AWS CloudFront', 'Cloud Services',
+            'Material UI', 'Social features', 'Image editting tools', 'Analytics', 'SEO Optimizations'
         ]
     ],
 
@@ -48,6 +64,16 @@ return [
         'articles' => [
             'bg' => sprintf('projects/undercover-bg.md'),
             'en' => sprintf('projects/undercover-en.md'),
+        ],
+        'slider' => [
+            ['title' => 'VIP Club', 'src' => '/assets/img/projects/undercover-1.jpg'],
+            ['title' => 'Player shop', 'src' => '/assets/img/projects/undercover-2.jpg'],
+            ['title' => 'Battle arena', 'src' => '/assets/img/projects/undercover-3.jpg'],
+        ],
+        'features' => [
+            'SVN', 'PHP 5.x', 'Java', 'Flash', 'Laravel 4.x', 'MySQL RDBMS', 'Memcached',
+            'AWS S3', 'AWS CloudFront', 'Cloud Services', 'Real-time multiplayer', 'Territory wars', 'Faction wars',
+            'Clans',
         ]
     ],
 

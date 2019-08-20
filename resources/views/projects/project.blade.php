@@ -42,6 +42,7 @@
                             <div class="feature-list border">
                                 <h3>@lang('Technologies used')</h3>
                                 <ul class="features">
+                                    @if (!isset($project['features']))
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> Git / GitHub</li>
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> PHP 7.x</li>
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> NodeJS</li>
@@ -57,6 +58,11 @@
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> Analytics</li>
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> Remarketing</li>
                                     <li class="feature-item"><i class="far fa-check-circle icon"></i> SEO optimizations</li>
+                                    @else
+                                        @foreach($project['features'] as $feature)
+                                        <li class="feature-item"><i class="far fa-check-circle icon"></i> {{ $feature }}</li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                             @if (!is_null($project['live_url']))
