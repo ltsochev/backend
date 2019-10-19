@@ -9,6 +9,7 @@ class SiteController extends Controller
 {
     public function index()
     {
+        seo()->setPageType('website');
         seo()->setTitle('Lachezar Tsochev - Full-stack developer for hire | Modern web solutions');
         seo()->setDescription('Full-stack web developer and systems engineer.');
         seo()->addGraphTag([
@@ -16,7 +17,7 @@ class SiteController extends Controller
             'locale'    => app()->getLocale()
         ]);
 
-        seo()->setShareImage(asset('assets/img/fb-share.jpg'));
+        seo()->setShareImage(asset('assets/img/fb-share.jpg'), 1200, 630);
 
         schemaOrg()->add(Schema::website()
                         ->url(url('/'))
