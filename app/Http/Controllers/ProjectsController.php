@@ -136,6 +136,7 @@ class ProjectsController extends Controller
         }
 
         seo()->setTitle(__("How it's made - :project", ['project' => $projectName]));
+        seo()->setShareImage(asset($project['image']));
 
         $schemaProject = Schema::organization();
         if (!is_null($project['live_url'])) {
