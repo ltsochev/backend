@@ -83,8 +83,15 @@ return [
         'live_url' => 'https://streetmobster.com',
         'image' => '/assets/img/projects/bgmafia-logo.jpg',
         'articles' => [
-            'bg' => sprintf('projects/streetmobster-bg.md'),
-            'en' => sprintf('projects/streetmobster-en.md'),
+            'bg' => sprintf('projects/bgmafia-bg.md'),
+            'en' => sprintf('projects/bgmafia-en.md'),
+        ],
+        'slider' => [
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/bgmafia-logo.jpg'],
+            ['title' => 'Homepage', 'src' => '/assets/img/projects/bgmafia.jpg'],
+        ],
+        'features' => [
+            'SVN', 'PHP 5.x', 'Java', 'Flash', 'MySQL RDBMS', 'Memcached', 'Near real-time multiplayer',
         ]
     ]
 ];
