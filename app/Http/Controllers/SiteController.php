@@ -16,6 +16,8 @@ class SiteController extends Controller
             'locale'    => app()->getLocale()
         ]);
 
+        seo()->setShareImage(asset('assets/img/fb-share.jpg'));
+
         schemaOrg()->add(Schema::website()
                         ->url(url('/'))
                         ->name('Lachezar Tsochev - full-stack developer for hire.'));

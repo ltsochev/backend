@@ -6,7 +6,7 @@ return [
         'name' => 'Rio.bg',
         'brand' => 'Реално изгодни оферти',
         'live_url' => 'https://rio.bg',
-        'image' => '/assets/img/projects/rio.jpg',
+        'image' => '/assets/img/projects/riobg-logo.jpg',
         'articles' => [
             'bg' => sprintf('projects/rio-bg.md'),
             'en' => sprintf('projects/rio-en.md'),
@@ -39,7 +39,7 @@ return [
         'name' => 'Kristina Kostova Portfolio',
         'brand' => 'Artist specializing in painting and illustration',
         'live_url' => 'https://kristinakostova.com',
-        'image' => '/assets/img/projects/kk-logo.jpg',
+        'image' => '/assets/img/projects/kk-logo.PNG',
         'articles' => [
             'bg' => sprintf('projects/kk-portfolio-bg.md'),
             'en' => sprintf('projects/kk-portfolio-en.md'),
@@ -81,7 +81,7 @@ return [
         'name' => 'Streetmobster',
         'brand' => 'Streetmobster is a free online mafia game that gives you the opportunity to claim your piece of the streets.',
         'live_url' => 'https://streetmobster.com',
-        'image' => '/assets/img/projects/bgmafia.jpg',
+        'image' => '/assets/img/projects/bgmafia-logo.jpg',
         'articles' => [
             'bg' => sprintf('projects/streetmobster-bg.md'),
             'en' => sprintf('projects/streetmobster-en.md'),
