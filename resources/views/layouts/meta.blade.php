@@ -20,6 +20,17 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
+        @if (app()->environment() === 'production')
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150377756-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-150377756-1');
+        </script>
+        @endif
+
         {!! app(App\Libraries\Schema\Manager::class)->render() !!}
 
     </head>
