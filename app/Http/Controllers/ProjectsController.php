@@ -31,6 +31,8 @@ class ProjectsController extends Controller
             'locale'    => app()->getLocale()
         ]);
 
+        \App\Support\preloader_disable();
+
         return view('projects.planner');
     }
 

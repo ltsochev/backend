@@ -107,3 +107,13 @@ function url_query($url, array $params = [])
 
     return url($urlPath . '?' . http_build_query($httpParams));
 }
+
+function preloader_disable()
+{
+    view()->share('preloaderDisabled', true);
+}
+
+function preloader_enable()
+{
+    view()->share('preloaderDisabled', false);
+}

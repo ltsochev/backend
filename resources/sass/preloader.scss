@@ -1,0 +1,123 @@
+.preloading {
+    .preloader-container {
+        position: fixed;
+        z-index: 150;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #555;
+        transition: .5s opacity ease-in;
+    }
+
+    .loader2 {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        margin: -50px 0 0 -50px;
+    }
+
+    .container-B {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    .spinner1 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    .spinner1 {
+        animation: rotation0 4s infinite linear, resize1 4s infinite linear;
+    }
+
+    .hex0,
+    .hex120,
+    .hex240 {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        height: 57.74%;
+        left: 0;
+        top: 21.13%;
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+    }
+
+    .hex0 {
+        animation: rotation0 4s infinite linear;
+    }
+
+    .hex120 {
+        transform: rotate(120deg);
+        animation: rotation120 4s infinite linear;
+    }
+
+    .hex240 {
+        transform: rotate(240deg);
+        animation: rotation240 4s infinite linear;
+    }
+
+    @keyframes rotation0 {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes rotation120 {
+        0% {
+            transform: rotate(120deg);
+        }
+        100% {
+            transform: rotate(480deg);
+        }
+    }
+
+    @keyframes rotation240 {
+        0% {
+            transform: rotate(240deg);
+        }
+        100% {
+            transform: rotate(600deg);
+        }
+    }
+
+    @keyframes resize1 {
+        0%,
+        50%,
+        100% {
+            width: 100%;
+            height: 100%;
+            left: 0%;
+            top: 0%;
+        }
+        25%,
+        75% {
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top: -10%;
+        }
+        12.5%,
+        37.5%,
+        62.5%,
+        87.5% {
+            width: 70%;
+            height: 70%;
+            left: 15%;
+            top: 15%;
+        }
+    }
+}

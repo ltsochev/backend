@@ -20,7 +20,7 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        @if (app()->environment() === 'production')
+        @env('production')
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150377756-1"></script>
         <script>
@@ -29,12 +29,17 @@
             gtag('js', new Date());
             gtag('config', 'UA-150377756-1');
         </script>
-        @endif
+        @endenv
 
         {!! app(App\Libraries\Schema\Manager::class)->render() !!}
 
+        @if (!isset($preloaderDisabled) || $preloaderDisabled !== true)
+        <script src="<?= asset('js/preloader.js'); ?>"></script>
+        <style type="text/css">.preloading .site-window{display:none;}</style>
+        <link rel="stylesheet" href="<?= asset('css/preloader.css'); ?>" type="text/css" media="all" />
+        @endif
     </head>
-    <body data-spy="scroll" data-target="#main-menu-scrollspy" data-offset="60">
+    <body data-spy="scroll" data-target="#main-menu-scrollspy" data-offset="60" class="preloading">
         <div id="stage" class="site-window {{ !empty($body_class) ? $body_class : '' }}">
             @yield('content', 'No content provided for meta layout')
 
@@ -47,5 +52,9 @@
 
         @yield('styles')
         @yield('scripts')
+
+        @if (!isset($preloaderDisabled) || $preloaderDisabled !== true)
+        @include('layouts.preloader')
+        @endif
     </body>
 </html>
