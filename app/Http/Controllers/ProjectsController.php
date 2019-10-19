@@ -99,7 +99,7 @@ class ProjectsController extends Controller
 
         session()->flash('project-request', $projectRequest->id);
 
-        Mail::to('ltsochev@live.com')->send(new ProjectRequested($projectRequest));
+        Mail::to('lachezar@ltsochev.com')->send(new ProjectRequested($projectRequest));
 
         return redirect()->route('project-planner-success');
     }
