@@ -49,3 +49,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
     $router->get('settings', 'SettingsController@getDashboard')->name('admin.settings.dashboard');
 });
+
+Route::get('discord', 'SiteController@getDiscord');
