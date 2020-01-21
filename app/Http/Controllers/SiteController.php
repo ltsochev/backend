@@ -30,4 +30,9 @@ class SiteController extends Controller
     {
         return view('page.tos');
     }
+
+    public function getDiscord()
+    {
+        return redirect()->to('https://discord.gg/bNutU2e');
+    }
 }

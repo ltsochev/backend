@@ -55,3 +55,5 @@ Route::domain('git.ltsochev.com')->group(function() {
         return redirect()->to('https://github.com/ltsochev-dev');
     })
 });
+
+Route::get('discord', 'SiteController@getDiscord');
