@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'SiteController@index');
 
 Route::group(['prefix' => 'projects'], function ($router) {
@@ -50,10 +52,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     $router->get('settings', 'SettingsController@getDashboard')->name('admin.settings.dashboard');
 });
 
-Route::domain('git.ltsochev.com')->group(function() {
-    Route::get('/', function() {
+Route::domain('git.ltsochev.com')->group(function () {
+    Route::get('/', function () {
         return redirect()->to('https://github.com/ltsochev-dev');
-    })
+    });
 });
 
 Route::get('discord', 'SiteController@getDiscord');
