@@ -1,7 +1,7 @@
 @extends('layouts.meta')
 
 @section('content')
-    <div class="hero-panel" style="background-image: url('assets/img/startup-1.jpg');" id="home-hero">
+    <div class="hero-panel" style="background-image: url('assets/img/website-background1.jpg');" id="home-hero">
         <a href="<?= url('/'); ?>" class="logo">Lachezar Tsochev IT Solutions</a>
         <div class="app-navbar">
             <nav class="navbar navbar-expand-lg navbar-light main-menu" id="main-menu-scrollspy">
@@ -19,6 +19,14 @@
                     </ul>
                 </div>
             </nav>
+        </div>
+        <div class="hero-caption">
+            <h1>@lang('<span class="text-orange">Full-Stack</span> Web/Mobile <span class="text-orange">Developer</span><br/>&amp; Consultant for hire')</h1>
+            <div class="button-container mt-3">
+                <a href="#contacts" class="btn btn-orange rounded-elipse text-uppercase contacts-btn">
+                    <div class="label" data-hover="@lang('Turn your idea into reality!')">@lang('Contact me') <i class="btn-icon fas fa-long-arrow-alt-right"></i></div>
+                </a>
+            </div>
         </div>
         <div class="learn-more">
             <a href="#about" class="learn-more-btn scroll-to-btn">

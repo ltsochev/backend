@@ -21,3 +21,12 @@ html, body {
 body {
     position: relative;
 }
+
+.btn-orange {
+    background-color: $orange-alt;
+    color: $white;
+
+    &:hover {
+        color: $white;
+    }
+}
