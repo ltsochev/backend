@@ -21,7 +21,7 @@
             </nav>
         </div>
         <div class="hero-caption">
-            <h1>@lang('<span class="text-orange">Full-Stack</span> Web/Mobile <span class="text-orange">Developer</span><br/>&amp; Consultant for hire')</h1>
+            <h1>@lang('<span class="text-orange">Full-Stack</span> Web/Mobile <span class="text-orange">Developer</span><br/>&amp; Consultant')</h1>
             <div class="button-container mt-3">
                 <a href="#contacts" class="btn btn-orange rounded-elipse text-uppercase contacts-btn">
                     <div class="label" data-hover="@lang('Turn your idea into reality!')">@lang('Contact me') <i class="btn-icon fas fa-long-arrow-alt-right"></i></div>
@@ -123,44 +123,44 @@
                 <header>
                     <h1>@lang('Services & Solutions')</h1>
                 </header>
-                <div class="filled-section filled-section-blue">
+                <div class="filled-section filled-section-dark-gray">
                     <div class="container">
                         <div class="row">
                             <ul class="services-list">
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Competitive rates & Project quotes')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Transparent, Collaborative, Communicative')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Security first approach')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('SEO optimizations')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Responsive web design')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Cloud services with years of experience')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Microservices from top to bottom')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('RESTful API development and integration')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Consulting')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Server setup and deployment')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Maintenance after product delivery')
                                 </li>
-                                <li class="services-list-item">
+                                <li class="services-list-item"><i class="fas fa-check-circle"></i>
                                     @lang('Modern technologies (HTML5, CSS, etc...)')
                                 </li>
                             </ul>

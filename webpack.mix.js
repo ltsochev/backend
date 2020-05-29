@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -25,5 +26,6 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/bootstrap.scss', 'public/css')
    .sass('resources/sass/preloader.scss', 'public/css')
    .sass('resources/sass/admin.scss', 'public/css')
+   .purgeCss();
 
 mix.copyDirectory('resources/assets', 'public/assets');
