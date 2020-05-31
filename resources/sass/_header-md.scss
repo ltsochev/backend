@@ -1,7 +1,6 @@
 @include media-breakpoint-down(md) {
 .hero-panel {
     .navbar {
-        background-color: $body-bg;
         .nav-menu {
             > li.nav-menu-item {
                 a {
@@ -34,6 +33,13 @@
                 }
             }
         }
+    }
+
+    .hero-caption {
+        position: static;
+        width: 90%;
+        margin: 0 auto;
+        transform: none;
     }
 }
 

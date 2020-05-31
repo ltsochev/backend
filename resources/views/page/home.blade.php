@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="hero-panel" style="background-image: url('assets/img/website-background1.jpg');" id="home-hero">
-        <a href="<?= url('/'); ?>" class="logo">Lachezar Tsochev IT Solutions</a>
         <div class="app-navbar">
             <nav class="navbar navbar-expand-lg navbar-light main-menu" id="main-menu-scrollspy">
                 @include('layouts.language-switcher')
@@ -20,6 +19,7 @@
                 </div>
             </nav>
         </div>
+        <a href="<?= url('/'); ?>" class="logo">Lachezar Tsochev IT Solutions</a>
         <div class="hero-caption">
             <h1>@lang('<span class="text-orange">Full-Stack</span> Web/Mobile <span class="text-orange">Developer</span><br/>&amp; Consultant')</h1>
             <div class="button-container mt-3">
