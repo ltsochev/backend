@@ -28,7 +28,8 @@
 
     const onDomReady = () => {
         document.body.classList.remove(PRELOADER_CLASS);
-        // PRELOADER_DOM.remove();
+
+        PRELOADER_DOM.remove();
 
         const event = new Event('srk-loaded');
 

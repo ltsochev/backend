@@ -32,9 +32,9 @@
           </nav>
       </div>
 
-      <section class="video-section ads-section">
+      <section class="video-section summer-section">
           <picture class="_3bnai">
-            <img alt="Ads" class="_3fXt7" src="{{ asset('assets/img/demos/srk/beach.gif') }}">
+            <img alt="summer-beach" class="_3fXt7" src="{{ asset('assets/img/demos/srk/beach.gif') }}">
           </picture>
           <div class="content-box">
             <h3>Latest work</h3>
