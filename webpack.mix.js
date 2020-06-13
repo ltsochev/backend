@@ -26,8 +26,12 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/bootstrap.scss', 'public/css')
    .sass('resources/sass/preloader.scss', 'public/css')
    .sass('resources/sass/admin.scss', 'public/css')
-   .purgeCss({
-       enabled: true,
-   });
+   .purgeCss();
 
 mix.copyDirectory('resources/assets', 'public/assets');
+
+// Gunio's css
+mix.js('resources/js/srk.js', 'public/js')
+   .js('resources/js/srk-preloader.js', 'public/js')
+   .sass('resources/sass/srk.scss', 'public/css')
+   .sass('resources/sass/srk-preloader.scss', 'public/css')

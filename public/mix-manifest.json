@@ -6,7 +6,11 @@
     "/css/bootstrap.css": "/css/bootstrap.css",
     "/css/preloader.css": "/css/preloader.css",
     "/css/admin.css": "/css/admin.css",
+    "/css/srk.css": "/css/srk.css",
+    "/css/srk-preloader.css": "/css/srk-preloader.css",
     "/js/app-minimal.js": "/js/app-minimal.js",
     "/js/bootstrap.js": "/js/bootstrap.js",
-    "/js/preloader.js": "/js/preloader.js"
+    "/js/preloader.js": "/js/preloader.js",
+    "/js/srk.js": "/js/srk.js",
+    "/js/srk-preloader.js": "/js/srk-preloader.js"
 }

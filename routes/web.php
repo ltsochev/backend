@@ -29,6 +29,10 @@ Route::group(['prefix' => 'projects'], function ($router) {
     $router->get('details/{project}', 'ProjectsController@getProject')->name('project');
 });
 
+Route::group(['prefix' => 'demo'], function ($router) {
+    $router->get('srk', 'DemoController@getSrkSpa')->name('demo.srk');
+});
+
 Route::get('admin/login', 'Auth\\LoginController@showLoginForm')->name('login');
 Route::post('admin/login', 'Auth\\LoginController@login');
 Route::get('admin/logout', 'Auth\\LoginController@logout')->name('logout');

@@ -1,0 +1,155 @@
+body {
+    background: #333;
+
+    &.preloading {
+        #stage {
+            display: none;
+        }
+    }
+}
+
+.preloader {
+    display: none;
+    position: absolute;
+    z-index: 110;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease-in;
+
+    &.shown {
+        display: block;
+    }
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    svg {
+        width: 512px;
+        height: 512px;
+    }
+
+    .srk-rectangle {
+        stroke-dasharray: 3432;
+        stroke-dashoffset: 3432;
+        animation: dash 1s linear forwards alternate;
+    }
+
+    .srk-label {
+        stroke-dasharray: 2548;
+        stroke-dashoffset: 2548;
+        animation: 1s dash linear 1.5s forwards alternate;
+    }
+
+    .srk-drone-arch {
+        stroke-dasharray: 1616;
+        stroke-dashoffset: 1616;
+        animation: dash 1s linear forwards alternate;
+    }
+
+    .srk-propellers {
+        stroke-dasharray: 1182;
+        stroke-dashoffset: 1182;
+        animation: 1s dash linear 1s forwards alternate;
+    }
+
+    .label {
+        position: absolute;
+        top: 360px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: none;
+    }
+
+    &.completed {
+        .label {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.reveal-text,
+.reveal-text::after {
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-duration: 800ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.reveal-text {
+	position: relative;
+	animation-name: clip-text;
+	color: #FFF;
+	white-space: nowrap;
+    cursor: default;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #B39F79;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        pointer-events: none;
+        animation-name: text-revealer;
+    }
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes clip-text {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@keyframes text-revealer {
+
+	0%, 50% {
+		transform-origin: 0 50%;
+	}
+
+	60%, 100% {
+		transform-origin: 100% 50%;
+	}
+
+
+	60% {
+		transform: scaleX(1);
+	}
+
+	100% {
+		transform: scaleX(0);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
