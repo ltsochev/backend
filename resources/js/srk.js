@@ -17,3 +17,14 @@ const resizeVideos = () => {
 
 window.addEventListener('resize', resizeVideos)
 document.addEventListener('srk-loaded', resizeVideos);
+
+/*document.getElementById('main-menu').querySelectorAll('a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        })
+    })
+});
+*/
