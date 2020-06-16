@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Oswald:wght@400;700&family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Oswald:wght@400;700&family=Amatic+SC&family=Roboto:wght@300;400&display=swap');
 
 // Variables
 @import 'variables';
@@ -182,7 +182,7 @@ body:not(.preloading) {
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             letter-spacing: .125rem;
             height: 100%;
 
@@ -327,14 +327,14 @@ body:not(.preloading) {
 .contacts-section {
 
     h2, h3 {
-        font-family: 'Oswald', sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-weight: 700;
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin: 0;
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: normal;
     }
 
@@ -351,6 +351,7 @@ body:not(.preloading) {
 
         .divider {
             border-right: 1px solid $white-contrast-color;
+            margin: 0 1rem;
         }
     }
 
@@ -358,6 +359,44 @@ body:not(.preloading) {
         ul {
             list-style-type: none;
             padding: 0;
+        }
+    }
+}
+
+.about-section {
+    h3 {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.125rem;
+    }
+
+    h4 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+    }
+
+    .info {
+        color: #87837E;
+        font-size: 1.125rem;
+        font-style: italic;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+    a.about-me {
+        color: $white-contrast-color;
+        font-size: 1.175rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        transition: color 0.3s linear;
+
+        i {
+            margin-left: .25rem;
+        }
+
+        &:hover {
+            color: #87837E;
         }
     }
 }

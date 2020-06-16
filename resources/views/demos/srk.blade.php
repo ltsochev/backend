@@ -20,13 +20,16 @@
                   <h1>Stoyan.Kapitanoff <em>SRK Aerial Cinematography</em></h1>
               </a>
           </div>
-          <nav class="navbar navbar-expand-lg" id="main-menu">
-              <ul class="nav-menu navbar-nav">
+          <nav class="navbar navbar-dark navbar-expand-lg" id="main-menu">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <ul class="nav-menu navbar-nav" id="main-menu-toggle">
                   <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link">Реклама</a></li>
                   <li class="nav-menu-item nav-item"><a href="#weddings-section" class="nav-link">Сватби</a></li>
                   <li class="nav-menu-item nav-item"><a href="#summer-section" class="nav-link">Лято {{ date('Y') }}</a></li>
                   <li class="nav-menu-item nav-item"><a href="#gear-section" class="nav-link">Оборудване</a></li>
-                  <li class="nav-menu-item nav-item"><a href="#weird" class="nav-link">Биография</a></li>
+                  <li class="nav-menu-item nav-item"><a href="#about-section" class="nav-link">Биография</a></li>
                   <li class="nav-menu-item nav-item"><a href="#contacts-section" class="nav-link">Контакти</a></li>
               </ul>
           </nav>
@@ -80,6 +83,25 @@
           </div>
       </section>
 
+      <section class="content-section about-section" id="about-section">
+          <div class="container">
+              <div class="row">
+                 <div class="col-12 col-lg-8">
+                    <article class="about">
+                        <header>
+                            <h3>Стоян Капитанов</h3>
+                            <h4>SRK Aerial Cinematography, запис с дрон и обработка</h4>
+                        </header>
+                        <p class="my-4 info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum urna justo, egestas non volutpat id, dictum et lacus. Aliquam dui velit, imperdiet sed tincidunt quis, luctus eu nunc. Pellentesque nibh nulla, rhoncus vitae imperdiet ut, egestas sed nisl. Integer tristique odio ut nisi efficitur tincidunt. Morbi tincidunt leo nec est cursus, quis efficitur nisi blandit. Pellentesque vehicula porta nunc, quis viverra tellus cursus malesuada. Donec laoreet nisl id aliquet pretium. Nunc vulputate, dui in pulvinar tristique, elit leo pulvinar arcu, aliquam pulvinar nunc nulla quis enim. Morbi eu mattis mauris, interdum tristique erat. Integer tempor neque felis, sed consequat ex facilisis id. Curabitur semper lacus ut felis ultricies aliquam. </p>
+                        <div class="my-2">
+                            <a href="#" class="about-me">Прочети повече <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+                 </div>
+              </div>
+          </div>
+      </section>
+
       <section class="video-section weddings-section" id="summer-section">
           <picture class="_3bnai">
               <img alt="Summer" class="_3fXt7" src="{{ asset('assets/img/demos/srk/booty.gif') }}">
@@ -97,14 +119,14 @@
 
       <section class="content-section contacts-section" id="contacts-section">
           <div class="container">
-              <div class="row">
-                  <div class="col-lg-6">
+              <div class="d-flex justify-content-around">
+                  <div class="contacts-zone">
                       <article class="contacts">
                           <header>
                               <h2>Свържете се с мен</h2>
                               <h3>за да създадем креативни проекти заедно!</h3>
                           </header>
-                          <section class="my-4 d-flex justify-content-around contacts-data">
+                          <section class="my-4 d-flex justify-content-center contacts-data">
                               <div class="em text-center">
                                   <a href="#">info@mysite.com</a>
                               </div>
@@ -114,7 +136,7 @@
                               </div>
                           </section>
                           <section class="social-links">
-                              <ul class="d-flex justify-content-between">
+                              <ul class="d-flex justify-content-around">
                                   @foreach (['twitter', 'facebook', 'vimeo', 'instagram', 'youtube'] as $network)
                                   <li class="{{ $network }}">
                                       <a href="#" target="_blank" rel="external" title="Последвайте ме в {{ ucfirst($network) }}!">
@@ -126,7 +148,7 @@
                           </section>
                       </article>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="write-zone">
                       <article class="contacts-form">
                           <header>
                               <h2 class="mb-3">Пишете ми</h2>
