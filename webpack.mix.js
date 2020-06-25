@@ -35,3 +35,5 @@ mix.js('resources/js/srk.js', 'public/js')
    .js('resources/js/srk-preloader.js', 'public/js')
    .sass('resources/sass/srk.scss', 'public/css')
    .sass('resources/sass/srk-preloader.scss', 'public/css')
+
+mix.version();

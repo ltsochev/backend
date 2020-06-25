@@ -38,7 +38,7 @@ function is_bot()
  */
 function now($tz = null)
 {
-    return Carbon\Carbon::now($tz);
+    return \Carbon\Carbon::now($tz);
 }
 
 /**
@@ -116,4 +116,11 @@ function preloader_disable()
 function preloader_enable()
 {
     view()->share('preloaderDisabled', false);
+}
+
+function asset_versioned($asset)
+{
+    $assetLib = app('assets.versioned');
+
+    return asset($assetLib->asset($asset));
 }

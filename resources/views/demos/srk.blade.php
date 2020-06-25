@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="{{ asset('css/srk-preloader.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ App\Support\asset_versioned('/css/srk-preloader.css') }}" type="text/css" media="all" />
     <title>SRK Aerial Cinematography</title>
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 </head>
@@ -22,7 +22,8 @@
           </div>
           <nav class="navbar navbar-dark navbar-expand-lg" id="main-menu">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-bars"></i>
+                  <!-- <span class="navbar-toggler-icon"></span> -->
               </button>
               <ul class="nav-menu navbar-nav" id="main-menu-toggle">
                   <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link">Реклама</a></li>
@@ -37,7 +38,7 @@
 
       <section class="video-section summer-section" id="home-hero">
           <picture class="_3bnai">
-            <img alt="summer-beach" class="_3fXt7" src="{{ asset('assets/img/demos/srk/beach.gif') }}">
+            <img alt="summer-beach" class="_3fXt7" src="{{ App\Support\asset_versioned('assets/img/demos/srk/beach.gif') }}">
           </picture>
           <div class="content-box">
             <h3>Latest work</h3>
@@ -57,7 +58,7 @@
                 <div class="col-lg-4">
                     <div class="gear-container">
                         <div class="icon">
-                            <img src="{{ asset('assets/img/demos/srk/mavic-mini-transp.png') }}" alt="DJI Mavik Mini drone" />
+                            <img src="{{ App\Support\asset_versioned('assets/img/demos/srk/mavic-mini-transp.png') }}" alt="DJI Mavik Mini drone" />
                         </div>
                         <h3 class="title">{{ $drone }}</h3>
                         <p class="subtitle">Aliquam erat volutpat. Fusce eget ornare sapien. Integer lorem turpis, hendrerit quis vulputate in, fermentum faucibus lectus. Suspendisse dictum odio ac eleifend euismod. </p>
@@ -70,7 +71,7 @@
 
       <section class="video-section portfolio-section" id="weddings-section">
           <picture class="_3bnai">
-              <img alt="Weddings" class="_3fXt7" src="{{ asset('assets/img/demos/srk/cars.gif') }}">
+              <img alt="Weddings" class="_3fXt7" src="{{ App\Support\asset_versioned('assets/img/demos/srk/cars.gif') }}">
           </picture>
           <div class="content-box">
             <h3>Weddings</h3>
@@ -104,7 +105,7 @@
 
       <section class="video-section weddings-section" id="summer-section">
           <picture class="_3bnai">
-              <img alt="Summer" class="_3fXt7" src="{{ asset('assets/img/demos/srk/booty.gif') }}">
+              <img alt="Summer" class="_3fXt7" src="{{ App\Support\asset_versioned('assets/img/demos/srk/booty.gif') }}">
           </picture>
           <div class="content-box">
             <h3>Summer {{ date('Y') }}</h3>
@@ -119,7 +120,7 @@
 
       <section class="content-section contacts-section" id="contacts-section">
           <div class="container">
-              <div class="d-flex justify-content-around">
+              <div class="d-flex flex-column flex-md-row justify-content-around">
                   <div class="contacts-zone">
                       <article class="contacts">
                           <header>
@@ -198,6 +199,12 @@
               <p class="text-center">Website by <a href="https://ltsochev.com" class="expand" target="_blank" rel="external">Ltsochev.com</a></p>
           </section>
       </footer>
+
+      <div id="scroll-top" class="srk-scroller">
+        <a href="#" class="circle rounded-circle p-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-chevron-up icon"></i>
+        </a>
+      </div>
     </div>
 
     <div class="preloader">
@@ -207,9 +214,9 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/srk-preloader.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/srk.css') }}" type="text/css" media="all" />
+    <script src="{{ App\Support\asset_versioned('/js/srk-preloader.js') }}"></script>
+    <link rel="stylesheet" href="{{ App\Support\asset_versioned('/css/srk.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="{{ asset('js/srk.js') }}"></script>
+    <script src="{{ App\Support\asset_versioned('/js/srk.js') }}"></script>
 </body>
 </html>

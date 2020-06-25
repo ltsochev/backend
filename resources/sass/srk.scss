@@ -13,6 +13,10 @@ $input-btn-focus-box-shadow: none;
 $input-border-focus: 0;
 $input-btn-focus-color: 0;
 $input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+$font-family-thin: 'Montserrat', sans-serif;
+$font-family-bold: 'Oswald', sans-serif;
+$font-family-cursive: 'Amatic SC', cursive;
+$font-family-roboto: 'Roboto', sans-serif;
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -45,12 +49,14 @@ body:not(.preloading) {
 
     .navbar {
         align-items: stretch;
+        padding-top: 1rem;
+        padding-bottom: 0;
     }
 
     .logo-container {
         display: flex;
         align-items: center;
-        padding: 1rem 3rem;
+        padding: 1rem 0 0 3rem;
 
         .logo {
             flex-basis: 3.5rem;
@@ -91,17 +97,26 @@ body:not(.preloading) {
         }
 
         h1 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: $font-family-thin;
             font-weight: 300;
             font-size: 0.875rem;
             margin: 0;
             padding: 0;
             text-transform: uppercase;
             letter-spacing: 0.155rem;
+            position: relative;
 
             em {
+                position: absolute;
                 font-size: 0;
             }
+        }
+    }
+
+    .navbar-toggler {
+        border-color: $white-contrast-color;
+        i {
+            color: $white-contrast-color;
         }
     }
 }
@@ -109,7 +124,7 @@ body:not(.preloading) {
 .video-section {
     position: relative;
     overflow: hidden;
-    min-height: 410px;
+    // min-height: 410px;
 
     img {
         width: 100%;
@@ -139,7 +154,7 @@ body:not(.preloading) {
         flex-direction: column;
 
         h3 {
-            font-family: 'Oswald', sans-serif;
+            font-family: $font-family-bold;
             font-weight: 700;
             font-size: 2.5rem;
             color: $white;
@@ -150,7 +165,7 @@ body:not(.preloading) {
         }
 
         a.video-play {
-            font-family: 'Amatic SC', cursive;
+            font-family: $font-family-cursive;
             font-size: 2rem;
             font-weight: normal;
             color: $white;
@@ -180,11 +195,13 @@ body:not(.preloading) {
             color: $white-contrast-color;
             transition: color .4s ease;
             text-transform: uppercase;
-            font-family: 'Montserrat', sans-serif;
+            font-family: $font-family-thin;
             font-weight: 300;
             font-size: 0.8125rem;
             letter-spacing: .125rem;
             height: 100%;
+            padding-top: 0;
+            padding-bottom: 0;
 
             &:hover, &.active {
                 color: $header-link-color
@@ -202,12 +219,12 @@ body:not(.preloading) {
         flex-direction: column;
 
         .title {
-            font-family: 'Oswald', sans-serif;
+            font-family: $font-family-bold;
             font-size: 1.25rem;
         }
 
         .subtitle {
-            font-family: 'Amatic SC', cursive;
+            font-family: $font-family-cursive;
             font-weight: normal;
             font-style: italic;
             max-width: 50%;
@@ -233,7 +250,7 @@ body:not(.preloading) {
     height: 4rem;
     p, a {
         color: $header-link-color;
-        font-family: "Montserrat", sans-serif;
+        font-family: $font-family-thin;
         font-weight: 300;
         font-size: 0.75rem;
         margin-bottom: 0;
@@ -327,7 +344,7 @@ body:not(.preloading) {
 .contacts-section {
 
     h2, h3 {
-        font-family: "Montserrat", sans-serif;
+        font-family: $font-family-thin;
         font-weight: 700;
         font-size: 1.5rem;
         margin: 0;
@@ -344,7 +361,7 @@ body:not(.preloading) {
 
     .contacts-data {
         a {
-            font-family: 'Amatic SC', cursive;
+            font-family: $font-family-cursive;
             font-style: italic;
             font-size: 1.5rem;
         }
@@ -365,13 +382,13 @@ body:not(.preloading) {
 
 .about-section {
     h3 {
-        font-family: 'Oswald', sans-serif;
+        font-family: $font-family-bold;
         font-weight: 700;
         letter-spacing: 0.125rem;
     }
 
     h4 {
-        font-family: 'Montserrat', sans-serif;
+        font-family: $font-family-thin;
         font-weight: 700;
     }
 
@@ -379,7 +396,7 @@ body:not(.preloading) {
         color: #87837E;
         font-size: 1.125rem;
         font-style: italic;
-        font-family: 'Roboto', sans-serif;
+        font-family: $font-family-roboto;
         font-weight: 300;
         line-height: 1.5;
     }
@@ -387,7 +404,7 @@ body:not(.preloading) {
     a.about-me {
         color: $white-contrast-color;
         font-size: 1.175rem;
-        font-family: "Montserrat", sans-serif;
+        font-family: $font-family-thin;
         font-weight: bold;
         transition: color 0.3s linear;
 
@@ -397,6 +414,58 @@ body:not(.preloading) {
 
         &:hover {
             color: #87837E;
+        }
+    }
+}
+
+.srk-scroller {
+    position: fixed;
+    z-index: 500;
+    bottom: 1rem;
+    right: 1rem;
+    transition: opacity .3s linear;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .circle {
+        background: $header-link-color;
+        color: $white;
+
+        .icon {
+            transition: transform .15s ease-in;
+        }
+
+        &:hover {
+            .icon {
+                transform: translateY(-25%);
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .main-menu {
+        .logo-container {
+            padding-left: 1rem;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .main-menu {
+        .logo-container {
+            padding-left: .5rem;
+            .logo {
+                margin-right: .5rem;
+            }
+            h1 {
+                letter-spacing: 0.04rem;
+            }
         }
     }
 }
