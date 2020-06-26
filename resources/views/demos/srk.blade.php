@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="stylesheet" href="{{ App\Support\asset_versioned('/css/srk-preloader.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('/css/srk-preloader.css') }}" type="text/css" media="all" />
     <title>SRK Aerial Cinematography</title>
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 </head>
@@ -23,9 +23,8 @@
           <nav class="navbar navbar-dark navbar-expand-lg" id="main-menu">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
                   <i class="fa fa-bars"></i>
-                  <!-- <span class="navbar-toggler-icon"></span> -->
               </button>
-              <ul class="nav-menu navbar-nav" id="main-menu-toggle">
+              <ul class="nav-menu navbar-nav collapse navbar-collapse" id="main-menu-toggle">
                   <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link">Реклама</a></li>
                   <li class="nav-menu-item nav-item"><a href="#weddings-section" class="nav-link">Сватби</a></li>
                   <li class="nav-menu-item nav-item"><a href="#summer-section" class="nav-link">Лято {{ date('Y') }}</a></li>

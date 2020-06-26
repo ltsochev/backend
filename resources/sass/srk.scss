@@ -456,6 +456,34 @@ body:not(.preloading) {
     }
 }
 
+@include media-breakpoint-down(md) {
+    .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: 15%;
+        z-index: 100;
+
+        li.nav-item {
+            a.nav-link {
+                display: block;
+                text-align: right;
+            }
+        }
+    }
+
+    .gear-section {
+        padding: 0;
+
+        .gear-container {
+            padding: 0;
+
+            .icon {
+                margin: 0;
+            }
+        }
+    }
+}
+
 @include media-breakpoint-down(sm) {
     .main-menu {
         .logo-container {
