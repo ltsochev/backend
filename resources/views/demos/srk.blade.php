@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{{ asset('/css/srk-preloader.css') }}" type="text/css" media="all" />
     <title>SRK Aerial Cinematography</title>
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <meta name="theme-color" content="#000">
+    <meta property="og:title" content="SRK Aerial Cinematography - Stoyan Kapitanov" />
+	<meta property="og:description" content="Видео заснемане във въздуха за вашето специално събитие или реклама с професионален дрон." />
+	<meta property="og:url" content="{{ request()->fullUrl() }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="SRK Aerial Cinematography" />
+	<meta property="og:image" content="{{ asset('assets/img/demos/srk/srk-og.jpg') }}" />
+	<meta property="og:image:width" content="915" />
+	<meta property="og:image:height" content="915" />
 </head>
 <body class="preloading" data-spy="scroll" data-target="#main-menu">
     <div id="stage">
