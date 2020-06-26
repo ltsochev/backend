@@ -30,8 +30,9 @@
               </a>
           </div>
           <nav class="navbar navbar-dark navbar-expand-lg" id="main-menu">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="fa fa-bars"></i>
+              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+                  <!-- <i class="fa fa-bars"></i> -->
+                  <div class="bars"></div>
               </button>
               <ul class="nav-menu navbar-nav collapse navbar-collapse" id="main-menu-toggle">
                   <li class="nav-menu-item nav-item"><a href="#home-hero" class="nav-link">Реклама</a></li>
