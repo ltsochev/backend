@@ -31,7 +31,6 @@
           </div>
           <nav class="navbar navbar-dark navbar-expand-lg" id="main-menu">
               <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-menu-toggle" aria-controls="main-menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                  <!-- <i class="fa fa-bars"></i> -->
                   <div class="bars"></div>
               </button>
               <ul class="nav-menu navbar-nav collapse navbar-collapse" id="main-menu-toggle">
@@ -227,5 +226,27 @@
     <link rel="stylesheet" href="{{ App\Support\asset_versioned('/css/srk.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="{{ App\Support\asset_versioned('/js/srk.js') }}"></script>
+    <script src="{{ App\Support\asset_versioned('/js/cookieconsent.js') }}" async defer></script>
+    <script>
+        window.cookieConsent({
+            prefix: 'srk',
+            cookieName: 'lts_cookieconsent',
+            text: 'Този уебсайт употребява бисквитки за да гарантира най-добро преживяване в нашия сайт.',
+            policyLabel: 'Прочети повече',
+            policyUrl: '{{ url("privacy") }}',
+            buttons: {
+                ok: {
+                    label: 'Съгласен съм',
+                    classList: [],
+                    handler: function() {}
+                },
+                cancel: {
+                    label: 'Отказвам',
+                    classList: [],
+                    handler: function() {}
+                }
+            }
+        });
+    </script>
 </body>
 </html>

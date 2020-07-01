@@ -255,7 +255,7 @@ body:not(.preloading) {
     a {
         position: relative;
         color: $white-contrast-color;
-        transition: color .3s linear;
+        transition: color .4s ease;
 
         &:hover {
             color: $header-link-color;
@@ -352,7 +352,12 @@ body:not(.preloading) {
     }
 
     a {
+        transition: color .4s ease;
         color: $white-contrast-color;
+
+        &:hover {
+            color: $header-link-color;
+        }
     }
 
     .contacts-data {
