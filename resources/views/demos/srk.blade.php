@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="{{ asset('/css/srk-preloader.css') }}" type="text/css" media="all" />
     <title>SRK Aerial Cinematography</title>
+    <meta name="description" content="Професионално въздушно фото и видео 4К заснемане с ДРОН!">
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <meta name="theme-color" content="#000">
+    <meta name="author" content="{{ htmlentities('Lachezar Tsochev <https://ltsochev.com>') }}">
     <meta property="og:title" content="SRK Aerial Cinematography - Stoyan Kapitanov" />
-	<meta property="og:description" content="Видео заснемане във въздуха за вашето специално събитие или реклама с професионален дрон." />
+	<meta property="og:description" content="Професионално въздушно фото и видео 4К заснемане с ДРОН!" />
 	<meta property="og:url" content="{{ request()->fullUrl() }}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="SRK Aerial Cinematography" />
@@ -103,7 +105,7 @@
                         </header>
                         <p class="my-4 info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum urna justo, egestas non volutpat id, dictum et lacus. Aliquam dui velit, imperdiet sed tincidunt quis, luctus eu nunc. Pellentesque nibh nulla, rhoncus vitae imperdiet ut, egestas sed nisl. Integer tristique odio ut nisi efficitur tincidunt. Morbi tincidunt leo nec est cursus, quis efficitur nisi blandit. Pellentesque vehicula porta nunc, quis viverra tellus cursus malesuada. Donec laoreet nisl id aliquet pretium. Nunc vulputate, dui in pulvinar tristique, elit leo pulvinar arcu, aliquam pulvinar nunc nulla quis enim. Morbi eu mattis mauris, interdum tristique erat. Integer tempor neque felis, sed consequat ex facilisis id. Curabitur semper lacus ut felis ultricies aliquam. </p>
                         <div class="my-2">
-                            <a href="#" class="about-me">Прочети повече <i class="fas fa-long-arrow-alt-right"></i></a>
+                            <a href="{{ route('demo.srk.about') }}" class="about-me">Прочети повече <i class="fas fa-long-arrow-alt-right"></i></a>
                         </div>
                     </article>
                  </div>
@@ -226,27 +228,5 @@
     <link rel="stylesheet" href="{{ App\Support\asset_versioned('/css/srk.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="{{ App\Support\asset_versioned('/js/srk.js') }}"></script>
-    <script src="{{ App\Support\asset_versioned('/js/cookieconsent.js') }}" async defer></script>
-    <script>
-        window.cookieConsent({
-            prefix: 'srk',
-            cookieName: 'lts_cookieconsent',
-            text: 'Този уебсайт употребява бисквитки за да гарантира най-добро преживяване в нашия сайт.',
-            policyLabel: 'Прочети повече',
-            policyUrl: '{{ url("privacy") }}',
-            buttons: {
-                ok: {
-                    label: 'Съгласен съм',
-                    classList: [],
-                    handler: function() {}
-                },
-                cancel: {
-                    label: 'Отказвам',
-                    classList: [],
-                    handler: function() {}
-                }
-            }
-        });
-    </script>
 </body>
 </html>

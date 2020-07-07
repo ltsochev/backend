@@ -8,4 +8,9 @@ class DemoController extends Controller
     {
         return view('demos.srk');
     }
+
+    public function getSrkAbout()
+    {
+        return view('demos.srk-about');
+    }
 }

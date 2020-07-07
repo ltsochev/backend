@@ -18,6 +18,10 @@ $font-family-bold: 'Oswald', sans-serif;
 $font-family-cursive: 'Amatic SC', cursive;
 $font-family-roboto: 'Roboto', sans-serif;
 
+$theme-colors: (
+  primary: $header-link-color
+);
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -447,6 +451,28 @@ body:not(.preloading) {
             }
         }
     }
+}
+
+.slider-container {
+    .slider {
+        display: flex;
+        background: transparent url(/assets/img/demos/srk/srk-slider.jpg) no-repeat center center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        height: 50vh;
+
+        h1, h2 {
+            color: $white-contrast-color;
+            text-shadow: 2px 2px 5px rgba(0,0,0,.5);
+        }
+    }
+}
+
+.about-section {
+    background-color: #fff;
+    min-height: 50vh;
 }
 
 @include media-breakpoint-down(lg) {
