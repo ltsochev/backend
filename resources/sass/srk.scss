@@ -390,11 +390,13 @@ body:not(.preloading) {
         font-family: $font-family-bold;
         font-weight: 700;
         letter-spacing: 0.125rem;
+        color: #333;
     }
 
     h4 {
         font-family: $font-family-thin;
         font-weight: 700;
+        color: #333;
     }
 
     .info {
